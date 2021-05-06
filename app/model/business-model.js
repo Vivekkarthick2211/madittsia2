@@ -25,7 +25,7 @@ Business.getAll = result => {
         result(err, null);
         return;
       }
-  
+  //jiiiiiii
       if (res.length) {
         console.log("found customer: ", res);
         result(null,res);

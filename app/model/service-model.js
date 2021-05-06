@@ -60,4 +60,7 @@ Services.getAll = result => {
      result(res, null);
     });
   }; 
+  
+
+
   module.exports=Services;

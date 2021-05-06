@@ -33,6 +33,8 @@ module.exports = app => {
    // app.delete("/wishlist/:productid&:userid", explora.delete);
   
     // Create a new Customer
-   // app.delete("/customers", customers.deleteAll); 
+   // app.delete("/customers", customers.deleteAll);
+   
+   app.post('/ins_services',subservices.insert_subserv)
   };
   

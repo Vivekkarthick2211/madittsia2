@@ -42,7 +42,7 @@ Madittsia.create = (registerdetails, result) => {
 /*  }) */
 };
 
-
+//jsjdjdaj
 
 Madittsia.getAlll = result => {
   sql.query("SELECT * FROM user_primary_info", (err, res) => {

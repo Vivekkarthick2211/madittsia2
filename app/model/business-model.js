@@ -25,12 +25,12 @@ Business.getAll = result => {
         result(err, null);
         return;
       }
-  //jiiiiiii
+  //jeeeevan
       if (res.length) {
         console.log("found customer: ", res);
         result(null,res);
         console.log(res)
-        //console.log(res[0])
+        //jeevan
         return;
       }
      result({ kind: "not_found" }, null);

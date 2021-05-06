@@ -25,3 +25,28 @@ exports.serviceOne = (req, res) => {
        //hi
    }); 
   };  
+
+exports.insert_subserv=(req,res)=>{
+  var insert_tab= new subservice({
+    mainservice:req.body.mainservice,
+    description:req.body.description,
+    name:req.body.name
+    // service_id:req.body.service_id
+  })
+  subservice.insert(insert_tab,(err,data)=>{
+    if (err) {
+      // var resco=208
+    
+        res.status(404).send({
+           status:404,
+           error:'Not found'
+        }) 
+      }
+   else res.send({
+    status:200,
+    messsage:'inserted successfully',
+     data:data});
+     //hi
+ }); 
+ 
+}

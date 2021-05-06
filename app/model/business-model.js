@@ -30,7 +30,7 @@ Business.getAll = result => {
         console.log("found customer: ", res);
         result(null,res);
         console.log(res)
-        //console.log(res[0])
+        //jeevan
         return;
       }
      result({ kind: "not_found" }, null);

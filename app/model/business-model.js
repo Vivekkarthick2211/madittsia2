@@ -17,7 +17,7 @@ Business.getAll = result => {
 
  Business.findById = (businesstype, result) => {
      console.log(businesstype)
-    sql.query(`SELECT fcm_token FROM user_primary_info where business_type='${businesstype}'`, (err, res) => {
+    sql.query(`SELECT fcm_token FROM user_primary_info where business_type='${businesstype}' OR email='${email}'`, (err, res) => {
 
       if (err) {
         console.log("error: ", err);

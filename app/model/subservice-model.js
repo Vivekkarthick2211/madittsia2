@@ -29,7 +29,7 @@ const subservices=function(ins){
   subservices.insert=(inserting,result)=>{
     sql.query(`select service_id from maditssia_main_service where service_name='${inserting["mainservice"]}'`,(err,resu)=>{
       if(err){
-        console.log(res)
+       // console.log(res)
         console.log(err)
         
       }

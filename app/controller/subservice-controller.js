@@ -57,3 +57,20 @@ exports.insert_subserv=(req,res)=>{
  }); 
  
 }
+
+exports.updating_serv=(req,res)=>{
+  subservice.update(req.params.id,new subservice(req.body),(err,data)=>{
+    if(err){
+      res.send({
+        status:400,
+        msg:"err",
+        err:err
+      })
+    }
+    res.send({
+      status:200,
+      msg:"updated",
+      data
+    })
+  })
+}

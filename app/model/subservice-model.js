@@ -63,7 +63,7 @@ const subservices=function(ins){
         // result({...res}, null);
     })
   })
-  sql.query(`create table if not exists ${inserting['name']}(id int primary key auto_increment,docuemnt varchar(350))`,(err,res)=>{
+  sql.query(`create table if not exists ${inserting['name']}(id int primary key auto_increment,document varchar(350))`,(err,res)=>{
     if(err){
       console.log("created err",err)
       result(null,err)

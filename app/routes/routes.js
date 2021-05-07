@@ -29,12 +29,13 @@ module.exports = app => {
     /*app.put("/customers/:customerId", customers.update); */
     app.get("/business", business.findall);
     app.get("/business/:businesstype", business.serviceOne);
+    app.get("/business/:businesstype/:email", business.serviceOne);
     // Delete a Customer with customerId
    // app.delete("/wishlist/:productid&:userid", explora.delete);
   
     // Create a new Customer
    // app.delete("/customers", customers.deleteAll);
    
-   app.post('/ins_services',subservices.insert_subserv)
+   app.post('/ins_services',subservices.insert_subserv) 
   };
   

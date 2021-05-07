@@ -47,8 +47,9 @@ exports.findall = (req, res) => {
   };
 
   exports.serviceOne = (req, res) => {
-    Business.findById(req.params.businesstype, (err, data) => {
+    Business.findById(req.params.businesstype,req.params.email, (err, data) => {
       var businesstype=req.params.businesstype;
+      var email=req.params.email
       if (err) {
         // var resco=208
         if (err.kind === "not_found") {
@@ -72,6 +73,7 @@ exports.findall = (req, res) => {
      
    }); 
    console.log(businesstype)
+   console.log(email)
    var token=[]
    var token1=[]
    console.log(data.length)

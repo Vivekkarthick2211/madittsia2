@@ -35,6 +35,7 @@ module.exports = app => {
     // Create a new Customer
    // app.delete("/customers", customers.deleteAll);
    
-   app.post('/ins_services',subservices.insert_subserv)
+   app.post('/ins_services',subservices.insert_subserv),
+   app.put('/update_service/:id',subservices.updating_serv)
   };
   

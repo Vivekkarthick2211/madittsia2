@@ -7,13 +7,14 @@ Services.getAll = result => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
+        
         return;
       }
       //console.log(res[0]['username'])
       console.log("customers: ", res);
       result(null, res);
       
-    });
+    }); 
   };
 
   Services.findById = (servicename, result) => {
@@ -21,6 +22,10 @@ Services.getAll = result => {
     sql.query(`Select id,name,service_id from  maditssia_sub_service where service_id=(SELECT service_id FROM maditssia_main_service WHERE service_name= '${servicename}')`, (err, res) => {
 
       if (err) {
+
+
+
+
         console.log("error: ", err);
         console.log(err.code,err.sqlMessage)
         result(err, null);

@@ -30,13 +30,14 @@ exports.insert_subserv=(req,res)=>{
   var insert_tab= new subservice({
     mainservice:req.body.mainservice,
     description:req.body.description,
-    name:req.body.name
+    name:req.body.name,
+    document:req.body.document
     // service_id:req.body.service_id
   })
   subservice.insert(insert_tab,(err,data)=>{
     if (err) {
       // var resco=208
-    
+        console.log(err)
         res.status(404).send({
            status:404,
            error:'Not found'

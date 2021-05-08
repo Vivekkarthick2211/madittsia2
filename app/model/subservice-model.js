@@ -88,7 +88,7 @@ const subservices=function(ins){
         // result({...res}, null);
     })
   })
-  sql.query(`create table if not exists ${inserting['name']}(id int primary key auto_increment,docuemnt varchar(350))`,(err,res)=>{
+  sql.query(`create table if not exists ${inserting['name']}(id int primary key auto_increment,document varchar(350))`,(err,res)=>{
     if(err){
       console.log("created err",err)
       result(null,err)
@@ -130,8 +130,26 @@ subservices.update=(id,updserv,result)=>{
     console.log("selected service_id",resu)
     console.log(resu[0]['service_id'])
 
+<<<<<<< HEAD
  */
     sql.query(`update maditssia_sub_service set description=${updserv['description']} where id=${id};`,(err,res)=>{
+=======
+ 
+}
+subservices.update=(id,updserv,result)=>{
+  sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
+    if(err){
+      console.log(err)
+      
+      // result(null,err)
+
+    }
+    console.log("selected service_id",resu)
+    console.log(resu[0]['service_id'])
+
+
+    sql.query(`update maditssia_sub_service set service_id=${resu[0]['service_id']} where id=${id};`,(err,res)=>{
+>>>>>>> jeevan
       if(err){
         console.log("update err",err)
         result(null,err)
@@ -140,10 +158,16 @@ subservices.update=(id,updserv,result)=>{
       console.log("updated",res)
       result(null,{id:id.insertedID,...res})
     })
+<<<<<<< HEAD
 
   
 }
 >>>>>>> Stashed changes
+=======
+  })
+  
+}
+>>>>>>> jeevan
   
 
   module.exports=subservices;

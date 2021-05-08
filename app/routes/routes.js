@@ -35,43 +35,11 @@ module.exports = app => {
   
     // Create a new Customer
    // app.delete("/customers", customers.deleteAll);
-   
-<<<<<<< HEAD
-
    app.post('/ins_services',subservices.insert_subserv)
-
-
-=======
-// <<<<<<< HEAD
-// <<<<<<< HEAD
-   // app.post('/ins_services',subservices.insert_subserv) 
-// =======
-   app.post('/ins_services',subservices.insert_subserv),
->>>>>>> jeevan
-   app.put('/update_service/:id',subservices.updating_serv)
-// >>>>>>> origin/jeevan
-// =======
-// <<<<<<< Updated upstream
-   // app.post('/ins_services',subservices.insert_subserv)
-// =======
-
-   // app.post('/ins_services',subservices.insert_subserv) 
-   // app.post('/ins_services',subservices.insert_subserv)
-   // app.put('/update_service/:id',subservices.updating_serv)
-
+  app.put('/update_service/:id',subservices.updating_serv)
 app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
-
-
-<<<<<<< HEAD
    app.put('/update_service/:id',subservices.updating_serv)
+   ////
 
-=======
-// >>>>>>> Stashed changes
-// =======
-   // app.post('/ins_services',subservices.insert_subserv),
-   // app.put('/update_service/:id',subservices.updating_serv)
-// >>>>>>> jeevan
-// >>>>>>> vivek
->>>>>>> jeevan
   };
   

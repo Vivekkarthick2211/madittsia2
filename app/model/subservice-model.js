@@ -109,32 +109,21 @@ const subservices=function(ins){
   //   console.log({id:res.insertedID, ...inserting})
   // })
 
-<<<<<<< Updated upstream
- 
-  } 
-=======
+
    })
 }
 
 
 subservices.update=(id,updserv,result)=>{
-  /*sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
+  sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
     if(err){
       console.log(err)
       
-
-
-
       // result(null,err) 
     }
     console.log("selected service_id",resu)
     console.log(resu[0]['service_id'])
-
-<<<<<<< HEAD
- */
-    sql.query(`update maditssia_sub_service set description=${updserv['description']} where id=${id};`,(err,res)=>{
-=======
- 
+  })
 }
 subservices.update=(id,updserv,result)=>{
   sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
@@ -149,7 +138,7 @@ subservices.update=(id,updserv,result)=>{
 
 
     sql.query(`update maditssia_sub_service set service_id=${resu[0]['service_id']} where id=${id};`,(err,res)=>{
->>>>>>> jeevan
+
       if(err){
         console.log("update err",err)
         result(null,err)
@@ -158,16 +147,15 @@ subservices.update=(id,updserv,result)=>{
       console.log("updated",res)
       result(null,{id:id.insertedID,...res})
     })
-<<<<<<< HEAD
+
 
   
-}
->>>>>>> Stashed changes
-=======
+
+
   })
   
 }
->>>>>>> jeevan
+
   
 
   module.exports=subservices;

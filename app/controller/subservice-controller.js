@@ -1,3 +1,4 @@
+const subservices = require("../model/subservice-model");
 const subservice=require("../model/subservice-model");
 
 exports.serviceOne = (req, res) => {
@@ -24,7 +25,35 @@ exports.serviceOne = (req, res) => {
        data:data});
        //hi
    }); 
-  };  
+  };
+  
+exports.insert_serv_doc=(req,res)=>{
+  console.log()
+  var insert_serv= new subservice({
+    subs_name_document:req.body.subs_name_document,
+  })
+  
+
+  subservice.insert_services_tables(req.params.main_name,new subservice(req.body),(err,data)=>{
+    console.log(req.params.main_name)
+    console.log("sadfsdf")
+    if(err){
+      console.log(err)
+      res.send({
+        status:404,
+        msg:"err"
+
+      })
+     
+    }
+    res.send({
+      status:200,
+      msg:"document inserted",
+      table_name:req.body.subs_name_document,
+      data
+    })
+  })
+}
 
 exports.insert_subserv=(req,res)=>{
   var insert_tab= new subservice({

@@ -109,21 +109,15 @@ const subservices=function(ins){
   //   console.log({id:res.insertedID, ...inserting})
   // })
 
-<<<<<<< HEAD
- 
-=======
 
->>>>>>> jeevan
    })
 }
 
 
 subservices.update=(id,updserv,result)=>{
-<<<<<<< HEAD
+
 sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
-=======
-  sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
->>>>>>> jeevan
+
     if(err){
       console.log(err)
       
@@ -132,15 +126,14 @@ sql.query(`select service_id from maditssia_main_service where service_name='${u
     console.log("selected service_id",resu)
     console.log(resu[0]['service_id'])
   })
-}
-<<<<<<< HEAD
+
 
 /*     sql.query(`update maditssia_sub_service set description=${updserv['description']} where id=${id};`,(err,res)=>{
 
  
 } */
-=======
->>>>>>> jeevan
+
+
 subservices.update=(id,updserv,result)=>{
   sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
     if(err){
@@ -163,26 +156,23 @@ subservices.update=(id,updserv,result)=>{
       console.log("updated",res)
       result(null,{id:id.insertedID,...res})
     })
-<<<<<<< HEAD
 
 
    })
 }
 
 
-=======
+
 
 
   
 
 
-  })
+  
   
 }
 
->>>>>>> jeevan
+
   
-
-
 
   module.exports=subservices;

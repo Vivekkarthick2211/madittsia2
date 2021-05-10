@@ -10,11 +10,11 @@ module.exports = app => {
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
 //    app.post("/service", services.createservice);
-   app.post("/primary_info",Madittsia_primary.primary); 
+    app.post("/primary_info",Madittsia_primary.primary); 
     
     // app.get("/service", services.findAll);
-     app.get("/menu", Menu.findall);
-  app.get("/menuui", Menu.findalll);
+    app.get("/menu", Menu.findall);
+    app.get("/mainservices", Menu.findalll);
     // Retrieve a single Customer with customerId
     app.get("/menu/:menuId", Menu.findOne);
 
@@ -31,7 +31,7 @@ module.exports = app => {
     /*app.put("/customers/:customerId", customers.update); */
     app.get("/business", business.findall);
     app.get("/business/:businesstype", business.serviceOne);
-    app.get("/business/:businesstype/:email", business.serviceOne);
+    app.get("/business/:email", business.serviceOne);
     // Delete a Customer with customerId
    // app.delete("/wishlist/:productid&:userid", explora.delete);
   
@@ -40,7 +40,7 @@ module.exports = app => {
    app.post('/ins_services',subservices.insert_subserv)
   app.put('/update_service/:id',subservices.updating_serv)
 app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
-   app.put('/update_service/:id',subservices.updating_serv)
+ //  app.put('/update_service/:id',subservices.updating_serv)
    ////
 
   };

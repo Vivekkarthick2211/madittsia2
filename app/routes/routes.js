@@ -44,7 +44,7 @@ module.exports = app => {
   // app.put('/update_service/:id',subservices.updating_serv)
 app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
    app.put('/update_service/:id',subservices.updating_serv)
-   ////
+   //// jeeeee
 
   };
   

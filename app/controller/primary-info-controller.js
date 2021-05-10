@@ -1,8 +1,8 @@
-const Madittsia = require("../model/register-model-madittsia.js");
+const Madittsia_primary = require("../model/primary-info-model");
 
  
 // Create and Save a new Customer
-exports.register= (req, res) => {
+exports.primary= (req, res) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -11,53 +11,49 @@ exports.register= (req, res) => {
   }
 
   // Create a Customer
-  const registerdetails = new Madittsia({
-    first_name: req.body.fname ,
+  const primarydetails = new Madittsia_primary({
+    /* first_name: req.body.fname ,
     last_name : req.body.lname ,
-    phone_no:  req.body.phone ,
-    email : req.body.email ,
-    password : req.body.password , 
-    Address:  req.body.address ,
+    phone_no:  req.body.phone , */
+    email : req.body.email , 
+    business_type:  req.body.business_type ,
+    company_name: req.body.company_name , 
+    service_category:  req.body.service_category ,
+    service_type: req.body.service_type ,  
+    fcm_token: req.body.fcm_token 
+   /*    Address:  req.body.address ,
     pincoode : req.body.pincoode ,
     dateofbirth:  req.body.dateofbirth ,
     gender:  req.body.gender ,
     aadhar_no:  req.body.aadhar_no ,
     qualification:  req.body.qualification ,
-    business_type:  req.body.business_type ,
-   /*  landmark : req.body.landmark ,
+    landmark : req.body.landmark ,
     city:  req.body.city ,
     state : req.body.state ,
     company_name:  req.body.company_name ,
     service_category:  req.body.service_category ,
     service_type: req.body.service_type , */
-    fcm_token: req.body.fcm_token 
   });
 
 
   // Save Customer in the database
-  Madittsia.create(registerdetails, (err, data) => {
+  Madittsia_primary.create(primarydetails, (err, data) => {
     //console.log("email")
     if (err)
       res.status(500).send({
-        //message:
-        //  err.message==
         status:500,
         msg:"duplicate"
-          // ||
-          // "Some error occurred while creating the Customer."
       });
     else res.send({
       status:200,
       msg:"Okk ",
-      data
-
-      
+      data  
     });
   });
 };
 
 // Retrieve all Customers from the database.
- exports.register_people = (req, res) => {
+/* exports.register_people = (req, res) => {
     Madittsia.getAlll((err, data) => {
     if (err)
       res.status(500).send({
@@ -73,7 +69,7 @@ exports.register= (req, res) => {
   });
 };
 
-/*
+
 // Update a Customer identified by the customerId in the request
 /* exports.update = (req, res) => {
   // Validate Request

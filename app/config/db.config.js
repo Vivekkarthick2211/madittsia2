@@ -1,7 +1,7 @@
 module.exports = {
-    HOST: "DESKTOP-0ELH5H3",
+    HOST: "localhost",
     USER: "root",
-    PASSWORD: "Cviac@2021",
+    PASSWORD: "rootvi",
     DB: "maditssia_test_db"
   };
   

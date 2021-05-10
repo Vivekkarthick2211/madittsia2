@@ -45,7 +45,7 @@ Madittsia.create = (registerdetails, result) => {
 //jsjdjdaj
 
 Madittsia.getAlll = result => {
-  sql.query("SELECT * FROM user_register", (err, res) => {
+  sql.query("SELECT first_name,last_name,phone_no,email,dateofbirth,Address,pincode,gender,qualification,business_type FROM user_register", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -57,6 +57,28 @@ Madittsia.getAlll = result => {
     
   });
 };
+
+Madittsia.findById = (email, result) => {
+
+ sql.query(`SELECT first_name,last_name,phone_no,email,dateofbirth,Address,pincode,gender,qualification,business_type FROM user_register where email='${email}'`, (err, res) => {
+
+   if (err) {
+     console.log("error: ", err);
+     console.log(err.code,err.sqlMessage)
+     result(err, null);
+     return;
+   }
+//jeeeevan
+   if (res.length) {
+     console.log("found customer: ", res);
+     result(null,res);
+     console.log(res)
+     //jeevan
+     return;
+   }
+  result({ kind: "not_found" }, null);
+ });
+}; 
 
 
 

@@ -6,9 +6,11 @@ module.exports = app => {
     const Menu=require("../controller/Menu-controller.js");
     const subservices = require("../controller/subservice-controller.js");
     const business = require("../controller/business-controller.js");
+    const mentorregister=require("../controller/mentor-controller.js")
     // Create a new Customer
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
+    app.get("/registeredpeople/:email", madittsia_register.serviceOne);
 //    app.post("/service", services.createservice);
     app.post("/primary_info",Madittsia_primary.primary); 
     
@@ -34,13 +36,14 @@ module.exports = app => {
     app.get("/business/:email", business.serviceOne);
     // Delete a Customer with customerId
    // app.delete("/wishlist/:productid&:userid", explora.delete);
-  
+   app.post("/mentorreg",mentorregister.mentorregister);
+   app.get("/mentors",mentorregister.registered_people);
     // Create a new Customer
    // app.delete("/customers", customers.deleteAll);
    app.post('/ins_services',subservices.insert_subserv)
   // app.put('/update_service/:id',subservices.updating_serv)
 app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
- //  app.put('/update_service/:id',subservices.updating_serv)
+   app.put('/update_service/:id',subservices.updating_serv)
    ////
 
   };

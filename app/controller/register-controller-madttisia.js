@@ -73,6 +73,34 @@ exports.register= (req, res) => {
   });
 };
 
+exports.serviceOne = (req, res) => {
+ Madittsia.findById(req.params.email, (err, data) => {
+  //  var businesstype=req.params.businesstype;
+    //var businesstype=req.params.email
+    if (err) {
+      // var resco=208
+      if (err.kind === "not_found") {
+         console.log(err)
+        res.status(404).send({
+           status:404,
+           error:'Not found'
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Customer with id " + req.params.email +res.statusCode
+        });
+      }
+    } 
+   else res.send({
+   status:200,
+    messsage:'retrive successfully',
+    
+     data:data, 
+
+   
+ }); 
+})
+}
 /*
 // Update a Customer identified by the customerId in the request
 /* exports.update = (req, res) => {

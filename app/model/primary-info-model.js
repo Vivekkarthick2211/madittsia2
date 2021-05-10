@@ -1,38 +1,38 @@
 const sql = require("./db.js");
 
 // constructor
-const Madittsia = function(registerdetails) {
+const Madittsia_primary = function(primarydetails) {
     //this.id = registerdetails.first_name,
-    this.first_name = registerdetails.first_name,
+/*     this.first_name = registerdetails.first_name,
     this.last_name = registerdetails.last_name,
-    this.phone_no= registerdetails.phone_no,
-    this.email = registerdetails.email,
-    this.password= registerdetails.password,   
-    this.Address= registerdetails.Address,
+    this.phone_no= registerdetails.phone_no, */
+    this.email = primarydetails.email,
+ /*    this.password= registerdetails.password,   
+    this.Address= registerdetails.Address, 
     this.pincode = registerdetails.pincode,   
     this.dateofbirth = registerdetails.dateofbirth,
     this.gender = registerdetails.gender,
     this.aadhar_no = registerdetails.aadhar_no,
-    this.qualification = registerdetails.qualification,
-    this.business_type = registerdetails.business_type,
+    this.qualification = registerdetails.qualification,*/
+    this.business_type = primarydetails.business_type,
 /*   this.landline_no= registerdetails.landline_no,
     this.city = registerdetails.city,
-    this.state = registerdetails.state, 
-    this.company_name = registerdetails.company_name,
-    this.service_category= registerdetails.service_category,
-    this.service_type= registerdetails.service_type,*/  
-    this.fcm_token = registerdetails.fcm_token
+    this.state = registerdetails.state, */  
+    this.company_name = primarydetails.company_name,
+    this.service_category=primarydetails.service_category,
+    this.service_type= primarydetails.service_type,
+    this.fcm_token = primarydetails.fcm_token
 }
-Madittsia.create = (registerdetails, result) => {
-            sql.query("INSERT INTO user_register SET ?", registerdetails, (err, res) => {
+Madittsia_primary.create = (primarydetails, result) => {
+            sql.query("INSERT INTO user_primary_info SET ?", primarydetails, (err, res) => {
                        if (err) {
                            console.log("error: ", err);
                           result(err, null);
                            return;
                         }
-                         console.log("created wishlist ", { id: res.insertId, ...registerdetails });
+                         console.log("created wishlist ", { id: res.insertId, ...primarydetails });
                        // console.log(res)
-                        result(null, { id: res.insertId, ...registerdetails });
+                        result(null, { id: res.insertId, ...primarydetails });
                       });
             // result(null ,{ id: res.insertId, ...wishlistdetails }); 
              //
@@ -43,9 +43,8 @@ Madittsia.create = (registerdetails, result) => {
 };
 
 //jsjdjdaj
-
-Madittsia.getAlll = result => {
-  sql.query("SELECT * FROM user_register", (err, res) => {
+Madittsia_primary.getAlll = result => {
+  sql.query("SELECT * FROM user_primary_info", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -114,5 +113,5 @@ Customer.removeAll = result => {
   });
 }; */
 
-module.exports =Madittsia;
+module.exports =Madittsia_primary;
 

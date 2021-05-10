@@ -1,15 +1,17 @@
 module.exports = app => {
     const madittsia_register= require("../controller/register-controller-madttisia.js");
+    const Madittsia_primary= require("../controller/primary-info-controller.js");
     const roles_get=require("../controller/roles-controller-madittsia.js");
     const services = require("../controller/service-controller.js");
     const Menu=require("../controller/Menu-controller.js");
     const subservices = require("../controller/subservice-controller.js");
     const business = require("../controller/business-controller.js");
     // Create a new Customer
-    app.post("/register",madittsia_register.register);
+    app.post("/register",madittsia_register.register); 
+    app.get("/registeredpeople", madittsia_register.register_people);
 //    app.post("/service", services.createservice);
-    // Retrieve all Customers
-     app.get("/registeredpeople", madittsia_register.register_people);
+   app.post("/primary_info",Madittsia_primary.primary); 
+    
     // app.get("/service", services.findAll);
      app.get("/menu", Menu.findall);
   app.get("/menuui", Menu.findalll);
@@ -35,31 +37,11 @@ module.exports = app => {
   
     // Create a new Customer
    // app.delete("/customers", customers.deleteAll);
-   
-// <<<<<<< HEAD
-// <<<<<<< HEAD
-   // app.post('/ins_services',subservices.insert_subserv) 
-// =======
-   app.post('/ins_services',subservices.insert_subserv),
-   app.put('/update_service/:id',subservices.updating_serv)
-// >>>>>>> origin/jeevan
-// =======
-// <<<<<<< Updated upstream
-   // app.post('/ins_services',subservices.insert_subserv)
-// =======
-
-   // app.post('/ins_services',subservices.insert_subserv) 
-   // app.post('/ins_services',subservices.insert_subserv)
-   // app.put('/update_service/:id',subservices.updating_serv)
-
+   app.post('/ins_services',subservices.insert_subserv)
+  app.put('/update_service/:id',subservices.updating_serv)
 app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
+   app.put('/update_service/:id',subservices.updating_serv)
+   ////
 
-
-// >>>>>>> Stashed changes
-// =======
-   // app.post('/ins_services',subservices.insert_subserv),
-   // app.put('/update_service/:id',subservices.updating_serv)
-// >>>>>>> jeevan
-// >>>>>>> vivek
   };
   

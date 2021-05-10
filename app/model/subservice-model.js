@@ -115,7 +115,14 @@ const subservices=function(ins){
 
 
 subservices.update=(id,updserv,result)=>{
+
+sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
+
+
   sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
+
+
+
     if(err){
       console.log(err)
       
@@ -124,7 +131,17 @@ subservices.update=(id,updserv,result)=>{
     console.log("selected service_id",resu)
     console.log(resu[0]['service_id'])
   })
+
+})
 }
+
+
+/*     sql.query(`update maditssia_sub_service set description=${updserv['description']} where id=${id};`,(err,res)=>{
+
+ 
+} */
+
+
 subservices.update=(id,updserv,result)=>{
   sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
     if(err){
@@ -149,12 +166,17 @@ subservices.update=(id,updserv,result)=>{
     })
 
 
+
+   })
+ }
+
+
+
+
+
   
 
 
-  })
-  
-}
 
   
 

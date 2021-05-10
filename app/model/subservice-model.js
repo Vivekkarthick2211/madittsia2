@@ -114,26 +114,26 @@ const subservices=function(ins){
 }
 
 
-subservices.update=(id,updserv,result)=>{
+// subservices.update=(id,updserv,result)=>{
 
-sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
-
-
-  sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
+// sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
 
 
+//   sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
 
-    if(err){
-      console.log(err)
+
+
+//     if(err){
+//       console.log(err)
       
-      // result(null,err) 
-    }
-    console.log("selected service_id",resu)
-    console.log(resu[0]['service_id'])
-  })
+//       // result(null,err) 
+//     }
+//     console.log("selected service_id",resu)
+//     console.log(resu[0]['service_id'])
+//   })
 
-})
-}
+// })
+// }
 
 
 /*     sql.query(`update maditssia_sub_service set description=${updserv['description']} where id=${id};`,(err,res)=>{
@@ -143,31 +143,28 @@ sql.query(`select service_id from maditssia_main_service where service_name='${u
 
 
 subservices.update=(id,updserv,result)=>{
-  sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
-    if(err){
-      console.log(err)
+  // sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
+  //   if(err){
+  //     console.log(err)
       
-      // result(null,err)
+  //     // result(null,err)
 
-    }
-    console.log("selected service_id",resu)
-    console.log(resu[0]['service_id'])
+  //   }
+  //   console.log("selected service_id",resu)
+  //   console.log(resu[0]['service_id'])
 
 
-    sql.query(`update maditssia_sub_service set service_id=${resu[0]['service_id']} where id=${id};`,(err,res)=>{
+    sql.query(`update maditssia_sub_service set description='${updserv['description']}' where id=${id};`,(err,res)=>{
 
       if(err){
         console.log("update err",err)
-        result(null,err)
+        // result(null,err)
 
       }
       console.log("updated",res)
       result(null,{id:id.insertedID,...res})
     })
-
-
-
-   })
+ 
  }
 
 

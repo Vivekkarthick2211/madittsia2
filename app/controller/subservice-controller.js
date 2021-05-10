@@ -84,9 +84,7 @@ exports.insert_subserv=(req,res)=>{
      data:data});
      //hi
  }); 
- 
 }
-
 exports.updating_serv=(req,res)=>{
   subservice.update(req.params.id,new subservice(req.body),(err,data)=>{
     if(err){

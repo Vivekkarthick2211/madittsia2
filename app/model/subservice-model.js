@@ -116,7 +116,7 @@ const subservices=function(ins){
 
 subservices.update=(id,updserv,result)=>{
 
-sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
+/* sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{ */
 
 
   sql.query(`select service_id from maditssia_main_service where service_name='${updserv["mainservice"]}'`,(err,resu)=>{
@@ -132,7 +132,7 @@ sql.query(`select service_id from maditssia_main_service where service_name='${u
     console.log(resu[0]['service_id'])
   })
 
-})
+         
 }
 
 
@@ -175,9 +175,4 @@ subservices.update=(id,updserv,result)=>{
 
 
   
-
-
-
-  
-
   module.exports=subservices;

@@ -1,5 +1,13 @@
 const Madittsia = require("../model/register-model-madittsia.js");
-
+const crypto=require('crypto');
+const key="a1b5c8d0e4f2g3h7i5j0k1l4m6n9f0b3";
+const iv="a4b8c6d2e0f5g7f5";
+function encrypt(text) {
+  let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), iv);
+  let encrypted = cipher.update(text);
+  encrypted = Buffer.concat([encrypted, cipher.final()]);
+  return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
+ }
  
 // Create and Save a new Customer
 exports.register= (req, res) => {
@@ -16,7 +24,7 @@ exports.register= (req, res) => {
     last_name : req.body.lname ,
     phone_no:  req.body.phone ,
     email : req.body.email ,
-    password : req.body.password , 
+    password : encrypt(req.body.password) , 
     Address:  req.body.address ,
     pincode : req.body.pincoode ,
     dateofbirth:  req.body.dateofbirth ,

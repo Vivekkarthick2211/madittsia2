@@ -60,7 +60,7 @@ Madittsia.getAlll = result => {
 
 Madittsia.findById = (email, result) => {
 
- sql.query(`SELECT first_name,last_name,phone_no,email,dateofbirth,Address,pincode,gender,qualification,business_type FROM user_register where email='${email}'`, (err, res) => {
+ sql.query(`SELECT first_name,last_name,gender,phone_no,email,Address,qualification,business_type FROM user_register where email='${email}'`, (err, res) => {
 
    if (err) {
      console.log("error: ", err);

@@ -74,3 +74,25 @@ exports.mentorregister= (req, res) => {
     });
   });
 };
+exports.findOne = (req, res) => {
+  MentorMadittsia.findById(req.params.email, (err, data) => {
+     if (err) {
+       // var resco=208
+       if (err.kind === "not_found") {
+          console.log(err)
+         res.status(404).send({
+            status:404,
+            error:'Not found'
+         });
+       } else {
+         res.status(500).send({
+           message: "Error retrieving Customer with id " + req.params.email +res.statusCode
+         });
+       }
+     } 
+    else res.send({
+     status:200,
+     messsage:'retrive successfully',
+      data:data});
+  }); 
+ };  

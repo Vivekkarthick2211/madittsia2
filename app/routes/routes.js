@@ -12,6 +12,7 @@ module.exports = app => {
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
+    app.get('/reg_mail',madittsia_register.findmail) 
 //    app.post("/service", services.createservice);
     app.post("/primary_info",Madittsia_primary.primary); 
     
@@ -50,7 +51,8 @@ module.exports = app => {
   // app.put('/update_service/:id',subservices.updating_serv)
 app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
    app.put('/update_service/:id',subservices.updating_serv)
-   ////
 
+   app.put('/upd_doc/:doc_name/:id',subservices.updating_documnet)
+   //// jeeeee
   };
   

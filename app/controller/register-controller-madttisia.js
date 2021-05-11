@@ -101,6 +101,22 @@ exports.serviceOne = (req, res) => {
  }); 
 })
 }
+
+exports.findmail=(req,res)=>{
+  Madittsia.find_email((err,data)=>{
+    if(err){
+      res.send({
+        status:400,
+        msg:err
+      })
+    }
+    res.send({
+      status:200,
+      data
+    })
+  })
+}
+
 /*
 // Update a Customer identified by the customerId in the request
 /* exports.update = (req, res) => {

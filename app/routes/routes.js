@@ -12,6 +12,7 @@ module.exports = app => {
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
+    app.get('/reg_mail',madittsia_register.findmail) 
 //    app.post("/service", services.createservice);
     app.post("/primary_info",Madittsia_primary.primary); 
     

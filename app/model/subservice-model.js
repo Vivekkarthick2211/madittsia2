@@ -165,6 +165,18 @@ subservices.update=(id,updserv,result)=>{
  
  }
 
+ subservices.update_documents=(tab_name,upd_doc,id,result)=>{
+   sql.query(`update ${tab_name} set document='${upd_doc['document']}' where id=${id}`,(err,res)=>{
+     if(err){
+       console.log(err)
+       result(null,err)
+      
+     }
+     console.log(res)
+     result(null,{id:id.insertedID,...res})
+   })
+ }
+
 
 
 

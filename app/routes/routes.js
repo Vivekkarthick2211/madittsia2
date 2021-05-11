@@ -6,7 +6,8 @@ module.exports = app => {
     const Menu=require("../controller/Menu-controller.js");
     const subservices = require("../controller/subservice-controller.js");
     const business = require("../controller/business-controller.js");
-    const mentorregister=require("../controller/mentor-controller.js")
+    const mentorregister=require("../controller/mentor-controller.js");
+    const eventsregister=require("../controller/events-controller.js")
     // Create a new Customer
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
@@ -40,6 +41,9 @@ module.exports = app => {
    app.get("/mentors",mentorregister.registered_people);
    app.get("/mentors/:email", mentorregister.findOne);
     // Create a new Customer
+    app.post("/eventsreg",eventsregister.eventsregister);
+   app.get("/events",eventsregister.register_people);
+  
    // app.delete("/customers", customers.deleteAll);
    app.post('/ins_services',subservices.insert_subserv)
   // app.put('/update_service/:id',subservices.updating_serv)

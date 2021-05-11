@@ -18,7 +18,7 @@ exports.register= (req, res) => {
     email : req.body.email ,
     password : req.body.password , 
     Address:  req.body.address ,
-    pincoode : req.body.pincoode ,
+    pincode : req.body.pincoode ,
     dateofbirth:  req.body.dateofbirth ,
     gender:  req.body.gender ,
     aadhar_no:  req.body.aadhar_no ,

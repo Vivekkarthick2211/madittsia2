@@ -38,6 +38,7 @@ module.exports = app => {
    // app.delete("/wishlist/:productid&:userid", explora.delete);
    app.post("/mentorreg",mentorregister.mentorregister);
    app.get("/mentors",mentorregister.registered_people);
+   app.get("/mentors/:email", mentorregister.findOne);
     // Create a new Customer
    // app.delete("/customers", customers.deleteAll);
    app.post('/ins_services',subservices.insert_subserv)

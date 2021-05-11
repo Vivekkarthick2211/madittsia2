@@ -57,4 +57,23 @@ MentorMadittsia.getAll = result => {
     
   });
 };
+
+MentorMadittsia.findById = (email, result) => {
+  sql.query(`SELECT * FROM mentors WHERE email= '${email}'`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      console.log(err.code,err.sqlMessage)
+      result(err, null);
+      return;
+    }
+
+    if (res.length) {
+      console.log("found customer: ", res[0]);
+      result(null,res[0] );
+      return;
+    }
+   result({ kind: "not_found" }, null);
+  });
+}; 
+
 module.exports=MentorMadittsia;

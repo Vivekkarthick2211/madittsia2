@@ -36,6 +36,7 @@ module.exports = app => {
     app.get("/business/:businesstype", business.serviceOne);
     app.get("/business/:email", business.serviceOne);
     // Delete a Customer with customerId
+    //HI VIVEK
    // app.delete("/wishlist/:productid&:userid", explora.delete);
    app.post("/mentorreg",mentorregister.mentorregister);
    app.get("/mentors",mentorregister.registered_people);

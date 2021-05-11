@@ -105,16 +105,18 @@ exports.updating_serv=(req,res)=>{
 exports.updating_documnet=(req,res)=>{
   subservice.update_documents(req.params.doc_name,req.params.id,new subservice(req.body),(err,data)=>{
     if(err){
-      console.log(err)
+      console.log("err")
       res.send({
-        status:500,
+        status:400,
         msg:err
 
       })
+      
+    }
+    console.log("updatedddd",data)
       res.send({
         status:200,
         data
       })
-    }
   })
 }

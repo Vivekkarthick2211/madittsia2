@@ -48,6 +48,5 @@ app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
 
    app.put('/upd_doc/:doc_name/:id',subservices.updating_documnet)
    //// jeeeee
-
   };
   

@@ -50,7 +50,7 @@ EventsMadittsia.getAlleventsbymentor = (email,result) => {
 //jsjdjdaj
 
 EventsMadittsia.getAllwithdisabled = (email,result) => {
-  sql.query(`SELECT eventname,eventplace, Address,fromdate,todate,starttime,endtime,conductedby,organisername,phone_no,image_url FROM events where todate >= (select CURRENT_DATE()) and conductedby ='${email}';`, (err, res) => {
+  sql.query(`SELECT eventname,eventplace, Address,fromdate,todate,starttime,endtime,conductedby,organisername,phone_no,image_url FROM events where todate >= (select CURRENT_TIMESTAMP()) and conductedby ='${email}';`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

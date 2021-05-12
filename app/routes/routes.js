@@ -1,5 +1,6 @@
 module.exports = app => {
     const madittsia_register= require("../controller/register-controller-madttisia.js");
+    const madittsia_login= require("../controller/user-login-controller");
     const Madittsia_primary= require("../controller/primary-info-controller.js");
     const roles_get=require("../controller/roles-controller-madittsia.js");
     const services = require("../controller/service-controller.js");
@@ -7,13 +8,16 @@ module.exports = app => {
     const subservices = require("../controller/subservice-controller.js");
     const business = require("../controller/business-controller.js");
     const mentorregister=require("../controller/mentor-controller.js");
-    const eventsregister=require("../controller/events-controller.js")
+    const eventsregister=require("../controller/events-controller.js");
+    const example=require("../controller/example")
     // Create a new Customer
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
     app.get('/reg_mail',madittsia_register.findmail) 
 //    app.post("/service", services.createservice);
+   app.get("/login/:customerId",madittsia_login.findOne);
+/////////
     app.post("/primary_info",Madittsia_primary.primary); 
     
     // app.get("/service", services.findAll);
@@ -37,6 +41,7 @@ module.exports = app => {
     app.get("/business/:businesstype", business.serviceOne);
     app.get("/business/:email", business.serviceOne);
     // Delete a Customer with customerId
+    //HI VIVEK
    // app.delete("/wishlist/:productid&:userid", explora.delete);
    app.post("/mentorreg",mentorregister.mentorregister);
    app.get("/mentors",mentorregister.registered_people);
@@ -44,7 +49,7 @@ module.exports = app => {
     // Create a new Customer
     app.post("/eventsreg",eventsregister.eventsregister);
    app.get("/events",eventsregister.register_people);
-  
+  /*  app.get("/example/:subs",example.serviceOne);    Not Needed its just for work*/
    // app.delete("/customers", customers.deleteAll);
    app.post('/ins_services',subservices.insert_subserv)
   // app.put('/update_service/:id',subservices.updating_serv)

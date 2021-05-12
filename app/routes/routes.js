@@ -24,7 +24,7 @@ module.exports = app => {
 
     app.get("/roles",roles_get.findall);
     app.get("/roles/:rolesname", roles_get.findOne);
-    
+      
     app.get("/services/all",services.servicesget)
     app.get("/services",Menu.findalll);
     app.get("/services/:servicename", services.serviceOne);

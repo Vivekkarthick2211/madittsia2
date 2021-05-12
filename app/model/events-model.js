@@ -34,6 +34,21 @@ EventsMadittsia.create = (eventregisterdetails, result) => {
          // result({ kind: "not_found" }, null);
 /*  }) */
 };
+
+EventsMadittsia.getAll = (result) => {
+  sql.query(`SELECT eventname,eventplace, Address,fromdate,todate,starttime,endtime,conductedby,organisername,phone_no,image_url FROM events where todate >= (select CURRENT_DATE());`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    //console.log(res[0]['username'])
+    console.log("customers: ", res);
+    result(null, res);
+    
+  });
+};
+//jsjdj
 EventsMadittsia.getAlleventsbymentor = (email,result) => {
   sql.query(`SELECT eventname,eventplace, Address,fromdate,todate,starttime,endtime,conductedby,organisername,phone_no,image_url FROM events where conductedby ='${email}';`, (err, res) => {
     if (err) {

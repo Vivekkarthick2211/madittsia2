@@ -38,7 +38,7 @@ EventsMadittsia.create = (eventregisterdetails, result) => {
 //jsjdjdaj
 
 EventsMadittsia.getAlll = result => {
-  sql.query("SELECT * FROM events", (err, res) => {
+  sql.query("SELECT eventname,eventplace, Address,fromdate,todate,starttime,endtime,conductedby,organisername,phone_no,image_url FROM events where todate >= (select CURRENT_DATE());", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

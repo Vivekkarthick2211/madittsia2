@@ -1,4 +1,3 @@
-
 const Customer = require("../model/user_login-model");
 const crypto = require('crypto');
 const key="a1b5c8d0e4f2g3h7i5j0k1l4m6n9f0b3";
@@ -47,6 +46,6 @@ exports.findOne = (req, res) => {
           
            console.log("before encryption",data);
       console.log("before encryption",data);
-      // console.log("after encryption",decrypt(data));
+      console.log("after encryption",decrypt(data));
    }); 
   };

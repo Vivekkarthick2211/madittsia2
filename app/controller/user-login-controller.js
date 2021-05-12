@@ -47,6 +47,6 @@ exports.findOne = (req, res) => {
           
            console.log("before encryption",data);
       console.log("before encryption",data);
-      console.log("after encryption",decrypt(data));
+      // console.log("after encryption",decrypt(data));
    }); 
   };

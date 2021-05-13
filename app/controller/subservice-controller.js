@@ -109,9 +109,7 @@ exports.updating_documnet=(req,res)=>{
       res.send({
         status:400,
         msg:err
-
       })
-      
     }
     console.log("updatedddd",data)
       res.send({

@@ -10,6 +10,9 @@ module.exports = app => {
     const mentorregister=require("../controller/mentor-controller.js");
     const eventsregister=require("../controller/events-controller.js");
     const example=require("../controller/example")
+    var notify=require("../controller/notification_controller")
+
+    const reg_docments=require('../controller/user_doc_reg.controller')
     // Create a new Customer
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
@@ -28,7 +31,7 @@ module.exports = app => {
 
     app.get("/roles",roles_get.findall);
     app.get("/roles/:rolesname", roles_get.findOne);
-    
+      
     app.get("/services/all",services.servicesget)
     app.get("/services",Menu.findalll);
     app.get("/services/:servicename", services.serviceOne);
@@ -59,6 +62,10 @@ app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
    app.put('/update_service/:id',subservices.updating_serv)
 
    app.put('/upd_doc/:doc_name/:id',subservices.updating_documnet)
+   app.post('/regdoc',reg_docments.regdoc)
+
+   app.get('/get_notify',notify.getnotify)
+   app.post('/post_notify',notify.notify)
    //// jeeeee
   };
   

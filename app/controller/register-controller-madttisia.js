@@ -29,7 +29,7 @@ exports.register= (req, res) => {
     pincode : req.body.pincode ,
     dateofbirth:  req.body.dateofbirth ,
     gender:  req.body.gender ,
-    aadhar_no:  req.body.adhar_no ,
+    aadhar_no:  req.body.aadhar_no ,
     qualification:  req.body.qualification ,
     business_type:  req.body.business_type ,
    /*  landmark : req.body.landmark ,

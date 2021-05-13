@@ -1,4 +1,3 @@
-
 const Customer = require("../model/user_login-model");
 const crypto = require('crypto');
 const key="a1b5c8d0e4f2g3h7i5j0k1l4m6n9f0b3";

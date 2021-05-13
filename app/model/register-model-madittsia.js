@@ -58,6 +58,16 @@ Madittsia.getAlll = result => {
   });
 };
 
+Madittsia.find_email=(result) =>{
+  sql.query(`select email from user_register`,(err,res)=>{
+    if(err){
+      result(null,err)
+    }
+    result(null,res)
+
+  })
+}
+
 Madittsia.findById = (email, result) => {
 
  sql.query(`SELECT first_name,last_name,gender,phone_no,email,Address,qualification,business_type FROM user_register where email='${email}'`, (err, res) => {

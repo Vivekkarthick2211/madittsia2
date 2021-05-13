@@ -64,7 +64,7 @@ exports.findall = (req, res) => {
           });
         }
       } 
-     else res.send({
+     else return res.send({
      status:200,
       messsage:'retrive successfully',
       service:businesstype,

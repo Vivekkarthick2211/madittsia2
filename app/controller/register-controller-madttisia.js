@@ -26,10 +26,10 @@ exports.register= (req, res) => {
     email : req.body.email ,
     password : encrypt(req.body.password) , 
     Address:  req.body.address ,
-    pincode : req.body.pincoode ,
+    pincode : req.body.pincode ,
     dateofbirth:  req.body.dateofbirth ,
     gender:  req.body.gender ,
-    aadhar_no:  req.body.aadhar_no ,
+    aadhar_no:  req.body.adhar_no ,
     qualification:  req.body.qualification ,
     business_type:  req.body.business_type ,
    /*  landmark : req.body.landmark ,
@@ -109,6 +109,22 @@ exports.serviceOne = (req, res) => {
  }); 
 })
 }
+
+exports.findmail=(req,res)=>{
+  Madittsia.find_email((err,data)=>{
+    if(err){
+      res.send({
+        status:400,
+        msg:err
+      })
+    }
+    res.send({
+      status:200,
+      data
+    })
+  })
+}
+
 /*
 // Update a Customer identified by the customerId in the request
 /* exports.update = (req, res) => {

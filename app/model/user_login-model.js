@@ -12,7 +12,6 @@ Users.findById = (customerId, result) => {
         result(err, null);
         return;
       }
-  
       if (res.length) {
         console.log("found customer: ", res[0]);
         var iv="a4b8c6d2e0f5g7f5";

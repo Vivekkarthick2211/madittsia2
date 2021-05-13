@@ -20,11 +20,8 @@ var iv="a4b8c6d2e0f5g7f5";
 
 
 exports.findOne = (req, res) => {
-    //console.log("response",res)
-    //console.log("req",req)
     Customer.findById(req.params.customerId, (err, data) => {
       if (err) {
-        // var resco=208
         if (err.kind === "not_found") {
            console.log(err)
           res.status(404).send({
@@ -43,8 +40,6 @@ exports.findOne = (req, res) => {
       messsage:'retrive successfully',
        data:
            decrypt(data)});
-          
-          
            console.log("before encryption",data);
       console.log("before encryption",data);
       console.log("after encryption",decrypt(data));

@@ -19,7 +19,7 @@ exports.eventsregister= (req, res) => {
     todate:  req.body.todate,
     starttime:  req.body.starttime,
     endtime:  req.body.endtime,
-    conducted_by:  req.body.conducted_by ,  
+    conducted_by:  req.body.conducted_by,  
     organisername:  req.body.organisername ,
     phone_no:  req.body.phone,
      image_url: req.body.imageurl
@@ -47,39 +47,10 @@ exports.eventsregister= (req, res) => {
     });
   });
 };
-exports.getallevents = (req, res) => {
-  EventMadittsia.getAll ((err, data) => {
-  if (err)
-    res.status(500).send({
-      message:
-        err.message || "Some error occurred while retrieving customers." 
-    });
-   
-  else res.send({
-    status:200,
-    msg:"Okk ",
-    data:data
-  });
-});
-};
-exports.eventregister_bymentor = (req, res) => {
-  EventMadittsia.getAlleventsbymentor (req.params.email,(err, data) => {
-  if (err)
-    res.status(500).send({
-      message:
-        err.message || "Some error occurred while retrieving customers." 
-    });
-   
-  else res.send({
-    status:200,
-    msg:"Okk ",
-    data:data
-  });
-});
-};
+
 // Retrieve all Customers from the database.
- exports.eventregister_peopledisabled = (req, res) => {
-    EventMadittsia.getAllwithdisabled (req.params.email,(err, data) => {
+ exports.register_people = (req, res) => {
+    EventMadittsia.getAlll((err, data) => {
     if (err)
       res.status(500).send({
         message:

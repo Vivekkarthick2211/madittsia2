@@ -7,7 +7,7 @@ var notification=function(list){
 }
 
 notification.find_notify=(result)=>{
-    sql.query(`select * from notification_tab`,(err,res)=>{
+    sql.query(`select * from notification_tab ORDER BY id DESC;`,(err,res)=>{
         if(err){
             console.log(err)
             result(null,err)
@@ -18,7 +18,7 @@ notification.find_notify=(result)=>{
 }
 
 notification.insert_notify=(getnotify,result)=>{
-    sql.query(`insert into notification_tab(userid,message) values('${getnotify['userid']}','${getnotify['userid']}joined on udhyam ')`,(err,res)=>{
+    sql.query(`insert into notification_tab(userid,message) values('${getnotify['userid']}','${getnotify['userid']}joined on udhyam')`,(err,res)=>{
         if(err){
             console.log(err)
             result(null,err)

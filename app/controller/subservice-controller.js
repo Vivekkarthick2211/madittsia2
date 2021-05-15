@@ -61,14 +61,11 @@ exports.insert_subserv=(req,res)=>{
     description:req.body.description,
     name:req.body.name,
     document:req.body.document
-    
-
     // service_id:req.body.service_id
   })
 
   console.log("asdfsdfsdf",insert_tab)
-
-  subservice.insert(insert_tab,(err,data)=>{
+ (insert_tab,(err,data)=>{
 
     if (err) {
       // var resco=208

@@ -175,7 +175,7 @@ subservices.update=(id,updserv,result)=>{
      }
      console.log("updatedd",res)
      result(null,{res:res.insertedID,...res})
-   })
+   })   
  }
 
 

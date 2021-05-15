@@ -50,7 +50,7 @@ admin.update=(id,admin,result)=>{
 
 admin.findById = (admin_id, result) => {
     console.log(admin_id);
-    sql.query(`SELECT admin_password FROM adminlogin WHERE admin_username = '${admin_id}'`, (err, res) => {
+    sql.query(`SELECT admin_username,admin_password FROM adminlogin WHERE username = '${admin_id}'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         console.log(err.code,err.sqlMessage)

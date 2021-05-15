@@ -65,6 +65,8 @@ Services.getAll = result => {
      result(res, null);
     });
   }; 
+
+  
   
 
 

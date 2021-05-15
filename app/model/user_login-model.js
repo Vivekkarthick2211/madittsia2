@@ -1,4 +1,3 @@
-
 const sql = require("./db.js");
 const Users=function(){
 
@@ -24,9 +23,4 @@ Users.findById = (customerId, result) => {
      result({ kind: "not_found" }, null);
     });
   };
-
-  
-
-
-
-  module.exports=Users;
+module.exports=Users;

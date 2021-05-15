@@ -52,9 +52,9 @@ module.exports = app => {
    app.get("/mentors/:email", mentorregister.findOne);
     // Create a new Customer
     app.post("/eventsreg",eventsregister.eventsregister);
-    app.get("/events",eventsregister.getallevents);
-    app.get("/eventss/:email",eventsregister.eventregister_bymentor);
-   app.get("/events/:email",eventsregister.eventregister_peopledisabled);
+    // app.get("/events",eventsregister.getallevents);
+    // app.get("/eventss/:email",eventsregister.eventregister_bymentor);
+//    app.get("/events/:email",eventsregister.eventregister_peopledisabled);
   /*  app.get("/example/:subs",example.serviceOne);    Not Needed its just for work*/
    // app.delete("/customers", customers.deleteAll);
    app.post('/ins_services',subservices.insert_subserv)
@@ -72,5 +72,6 @@ app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
    app.put('/admin/:id',admin_register.admin_update)
 
    app.get('/admin_login/:admin_id',admin_register.admin_login)
+   app.put('/update_notify/:id',notify.updnotify)
   };
      

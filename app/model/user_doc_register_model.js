@@ -14,7 +14,6 @@ table.findone=(ins_documents,result)=>{
             result(null,err)
         }
         result(null,res)
-
     })
 }
 

@@ -26,13 +26,6 @@ exports.mentorregister= (req, res) => {
     listof_interest: req.body.listof_interest,
     prof_skills :req.body.prof_skills,
     interested_maditssia :req.body.interested_maditssia 
-   /*  landmark : req.body.landmark ,
-    city:  req.body.city ,
-    state : req.body.state ,
-    company_name:  req.body.company_name ,
-    service_category:  req.body.service_category ,
-    service_type: req.body.service_type , 
-    fcm_token: req.body.fcm_token */
   });
 
 

@@ -18,7 +18,7 @@ notification.find_notify=(result)=>{
 }
 
 notification.insert_notify=(getnotify,result)=>{
-    sql.query(`insert into notification_tab(userid,message) values('${getnotify['userid']}','${getnotify['message']}')`,(err,res)=>{
+    sql.query(`insert into notification_tab(userid,message) values('${getnotify['userid']}','${getnotify['userid']}joined on udhyam ')`,(err,res)=>{
         if(err){
             console.log(err)
             result(null,err)

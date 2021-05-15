@@ -51,6 +51,7 @@ module.exports = app => {
    app.get("/mentors",mentorregister.registered_people);
    app.get("/mentors/:email", mentorregister.findOne);
     // Create a new Customer
+    //event
     app.post("/eventsreg",eventsregister.eventsregister);
     app.get("/events",eventsregister.getallevents);
     app.get("/eventss/:email",eventsregister.eventregister_bymentor);

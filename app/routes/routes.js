@@ -73,5 +73,6 @@ app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
    app.put('/admin/:id',admin_register.admin_update)
 
    app.get('/admin_login/:admin_id',admin_register.admin_login)
+   app.put('/update_notify/:id',notify.updnotify)
   };
      

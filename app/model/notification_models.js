@@ -27,4 +27,17 @@ notification.insert_notify=(getnotify,result)=>{
     })
 }
 
+notification.update_notify=(id,result)=>{
+    var read_mode=true;
+    sql.query(`update notification_tab set read_mode=${read_mode} where id=${id};`,(err,res)=>{
+        if(err){
+            console.log(err)
+            result(null, err)
+        }
+        result(null,res)
+    })
+}
+
+
+
 module.exports=notification

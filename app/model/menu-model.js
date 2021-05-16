@@ -27,7 +27,7 @@ MenuMadittsia.getAll = result => {
   };
   
   MenuMadittsia.findById = (menuId, result) => {
-    sql.query(`SELECT * FROM menu WHERE menuid= '${menuId}'`, (err, res) => {
+    sql.query(`SELECT * FROM menu WHERE menuid= '${menuId} order by menuid asc'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         console.log(err.code,err.sqlMessage)
@@ -43,6 +43,4 @@ MenuMadittsia.getAll = result => {
      result({ kind: "not_found" }, null);
     });
   }; 
-
-  
 module.exports =MenuMadittsia;

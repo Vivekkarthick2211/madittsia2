@@ -1,3 +1,4 @@
+const { request } = require('gaxios')
 var notify=require('../model/notification_models')
 
 exports.notify=(req,res)=>{
@@ -22,5 +23,20 @@ exports.getnotify=(req,res)=>{
         }
         res.send(data)
 
+    })
+}
+exports.updnotify=(req,res)=>{
+    notify.update_notify(req.params.id,(err,data)=>{
+        if(err){
+            console.log(err)
+            res.send({
+                status:400,
+                msg:errr
+            })
+        }
+        res.send({
+            status:200,
+            data
+        })
     })
 }

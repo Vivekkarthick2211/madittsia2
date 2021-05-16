@@ -15,7 +15,7 @@ Roles.getAll = result => {
   };
 
   Roles.findById = (rolesname, result) => {
-    sql.query(`SELECT menuid FROM roles WHERE rolesname= '${rolesname}'`, (err, res) => {
+    sql.query(`SELECT menuid FROM roles WHERE rolesname= '${rolesname}' order by menuid asc`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         console.log(err.code,err.sqlMessage)

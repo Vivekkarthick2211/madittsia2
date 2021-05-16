@@ -36,15 +36,11 @@ admin.update=(id,admin,result)=>{
             return;
         }
         console.log("hiiiiiiiiiiii")
-        // console.log(upddate)
-        
         console.log("updated customer: ", { id: id, ...admin });
 
         console.log(res)
         result(null, { id: id, ...admin });
     })
-    // respond.send("update")
-    // console.log(res)
     
 }
 
@@ -59,14 +55,10 @@ admin.findById = (admin_id, result) => {
       }
       if (res.length) {
         console.log("found customer: ", res[0]);
-        // var iv="a4b8c6d2e0f5g7f5";
-        //  var password=res[0]['password']
         result(null,res);
         return;
       }
-      // not found Customer with the id
-      //result(err, null);
-     result({ kind: "not_found" }, null);
+    //  result({ kind: "not_found" }, null);
     });
   };
 

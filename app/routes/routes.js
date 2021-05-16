@@ -53,9 +53,9 @@ module.exports = app => {
     // Create a new Customer
     //event
     app.post("/eventsreg",eventsregister.eventsregister);
-    // app.get("/events",eventsregister.getallevents);
-    // app.get("/eventss/:email",eventsregister.eventregister_bymentor);
-//    app.get("/events/:email",eventsregister.eventregister_peopledisabled);
+    app.get("/events",eventsregister.getallevents);
+    app.get("/eventss/:email",eventsregister.eventregister_bymentor);
+   app.get("/events/:email",eventsregister.eventregister_peopledisabled);
   /*  app.get("/example/:subs",example.serviceOne);    Not Needed its just for work*/
    // app.delete("/customers", customers.deleteAll);
    app.post('/ins_services',subservices.insert_subserv)

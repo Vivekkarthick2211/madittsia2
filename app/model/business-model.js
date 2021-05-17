@@ -4,7 +4,7 @@ const Business =function(){
 }
 
 Business.getAll = result => {
-    sql.query("SELECT * FROM user_primary_info", (err, res) => {
+    sql.query("SELECT business_types FROM businesstypes", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);

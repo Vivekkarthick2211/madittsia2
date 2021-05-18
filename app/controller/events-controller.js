@@ -1,6 +1,4 @@
 const EventMadittsia = require("../model/events-model.js");
-
- 
 // Create and Save a new Customer
 exports.eventsregister= (req, res) => {
   // Validate request
@@ -9,7 +7,6 @@ exports.eventsregister= (req, res) => {
       message: "Content can not be empty!"
     });
   }
-
   // Create a Customer
   const eventregisterdetails = new EventMadittsia({
     event_name: req.body.eventname ,
@@ -24,8 +21,6 @@ exports.eventsregister= (req, res) => {
     phone_no:  req.body.phone,
      image_url: req.body.imageurl
   });
-
-
   // Save Customer in the database
   EventMadittsia.create(eventregisterdetails, (err, data) => {
     //console.log("email")
@@ -42,8 +37,6 @@ exports.eventsregister= (req, res) => {
       status:200,
       msg:"Okk ",
       data
-
-      
     });
   });
 };
@@ -51,8 +44,10 @@ exports.getallevents = (req, res) => {
   EventMadittsia.getAll ((err, data) => {
   if (err)
     res.status(500).send({
-      message:
-        err.message || "Some error occurred while retrieving customers." 
+      /* message:
+        err.message || "Some error occurred while retrieving customers."  */
+        status:500,
+         msg:"error "
     });
    
   else res.send({
@@ -66,8 +61,10 @@ exports.eventregister_peopledisabled = (req, res) => {
   EventMadittsia.getAllwithdisabled (req.params.email,(err, data) => {
   if (err)
     res.status(500).send({
-      message:
-        err.message || "Some error occurred while retrieving customers." 
+      status:500,
+      msg:"error"
+     /*  message:
+        err.message || "Some error occurred while retrieving customers."  */
     });
    
   else res.send({

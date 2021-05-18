@@ -7,6 +7,7 @@ module.exports = app => {
     const Menu=require("../controller/Menu-controller.js");
     const subservices = require("../controller/subservice-controller.js");
     const business = require("../controller/business-controller.js");
+    const subbusiness = require("../controller/business-sub-controller.js");
     const mentorregister=require("../controller/mentor-controller.js");
     const eventsregister=require("../controller/events-controller.js");
     const example=require("../controller/example")
@@ -44,7 +45,7 @@ module.exports = app => {
     app.get("/business", business.findall);  //getting registerd services info
     app.get("/business/:businesstype", business.serviceOne);  //getting register services category(food&beverages,gem)
     app.get("/business/:email", business.serviceOne);//getting register services wih particular user(nive@gmail.com)
-   
+    app.get("/subbusiness/:maincategory", subbusiness.serviceOne);
     //HI VIVEK
    // app.delete("/wishlist/:productid&:userid", explora.delete);
    app.post("/mentorreg",mentorregister.mentorregister); //for mentor register

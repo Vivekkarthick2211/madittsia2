@@ -17,7 +17,7 @@ const SubBusiness =function(){
 
  SubBusiness.findById = (maincategory, result) => {
      console.log(maincategory)
-    sql.query(`SELECT Code,Description FROM sub_business_types where maincategory='${maincategory}'`, (err, res) => {
+    sql.query(`SELECT Code,Description,maincategory FROM sub_business_types where maincategory='${maincategory}'`, (err, res) => {
 
       if (err) {
         console.log("error: ", err);

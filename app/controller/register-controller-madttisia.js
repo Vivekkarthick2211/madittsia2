@@ -71,7 +71,9 @@ exports.register= (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while retrieving customers." 
+
       });
+      
      
     else res.send({
       status:200,
@@ -79,6 +81,7 @@ exports.register= (req, res) => {
       data:data
     });
   });
+  // res.send(err)
 };
 
 exports.serviceOne = (req, res) => {

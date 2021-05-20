@@ -67,6 +67,16 @@ Madittsia.find_email=(result) =>{
 
   })
 }
+Madittsia.check_mail=(mail,result)=>{
+  sql.query(`select email from user_register where email='${mail}'`,(err,res)=>{
+    if(err){
+      console.log(err)
+      result(null,result)
+    }
+  })
+
+
+}
 
 Madittsia.findById = (email, result) => {
 

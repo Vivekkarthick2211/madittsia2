@@ -26,7 +26,7 @@ udyam_reg.insert_udy=(udayReg,result)=>{
             result(null,err)
         }
         console.log(res)
-        result(null,{id:res.insertId,...res})
+        result(null,res)
     })
     var read_mode=false;
     sql.query(`insert into notification_tab(userid,message,read_mode) values('${udayReg['mailid']}','${udayReg['mailid']} joined on udyam',${read_mode})`,(err,res)=>{

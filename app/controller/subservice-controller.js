@@ -65,7 +65,7 @@ exports.insert_subserv=(req,res)=>{
   })
 
   console.log("asdfsdfsdf",insert_tab)
- (insert_tab,(err,data)=>{
+  subservice.insert(insert_tab,(err,data)=>{
 
     if (err) {
       // var resco=208
@@ -82,6 +82,7 @@ exports.insert_subserv=(req,res)=>{
      //hi
  }); 
 }
+
 exports.updating_serv=(req,res)=>{
   subservice.update(req.params.id,new subservice(req.body),(err,data)=>{
     if(err){

@@ -34,7 +34,16 @@ notification.update_notify=(id,result)=>{
             console.log(err)
             result(null, err)
         }
-        result(null,res)
+        if(res.affectedRows==0){
+            
+            result({kind:'notfound'},null);
+            return;
+        }
+        console.log("hiiiiiiiiiiii")
+        console.log("updated customer: ", { id: id, ...read_mode });
+
+        console.log(res) 
+        result(null, { id: id,...read_mode });
     })
 }
 

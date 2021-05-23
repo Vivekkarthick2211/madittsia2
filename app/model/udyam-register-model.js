@@ -18,6 +18,17 @@ var udyam_reg=function(udy){
     this.itreturn=udy.itreturn;
     this.turnover=udy.turnover
 }
+udyam_reg.getUdyamreg=(result)=>{
+    sql.query(`select * from udyam_register`,(err,res)=>{
+        if(err){
+            console.log(err)
+            result(null,err)
+        }
+        console.log(res)
+        result(null,res)
+    })
+}
+
 
 udyam_reg.insert_udy=(udayReg,result)=>{
     sql.query(`insert into udyam_register set ?`,udayReg,(err,res)=>{

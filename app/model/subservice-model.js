@@ -45,7 +45,7 @@ const subservices=function(ins){
 
       }
       console.log({id:res.insertedID,...insert_services})
-      result(null,{id:res.insertedID,...insert_services})
+      // result(null,{id:res.insertedID,...insert_services})
     })
   }
   
@@ -159,8 +159,16 @@ subservices.update=(id,updserv,result)=>{
         // result(null,err)
 
       }
-      console.log("updated",res)
-      result(null,{id:id.insertedID,...res})
+      if(res.affectedRows==0){
+            
+        result({kind:'notfound'},null);
+        return;
+    }
+    console.log("hiiiiiiiiiiii")
+    console.log("updated customer: ", { id: id, ...updserv });
+
+    console.log(res)
+    result(null, { id: id, ...updserv });
     })
  
  }
@@ -174,7 +182,17 @@ subservices.update=(id,updserv,result)=>{
        return;
      }
      console.log("updatedd",res)
-     result(null,{res:res.insertedID,...res})
+     if(res.affectedRows==0){
+            
+      result({kind:'notfound'},null);
+      return;
+  }
+  console.log("hiiiiiiiiiiii")
+  console.log("updated customer: ", { id: id, ...upd_doc });
+
+  console.log(res)
+
+  result(null, { id: id,...upd_doc });
    })   
  }
 

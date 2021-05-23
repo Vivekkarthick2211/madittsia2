@@ -20,6 +20,7 @@ exports.udyamregister=(req,res)=>{
         itreturn:req.body.itreturn,
         turnover:req.body.turnover
     })
+
     udyam.insert_udy(udytable,(err,data)=>{
         if(err){
             console.log(err)
@@ -33,4 +34,21 @@ exports.udyamregister=(req,res)=>{
             data
         })
     })
+}
+exports.getudyamregister=(req,res)=>{
+
+udyam.getUdyamreg((err,data)=>{
+    if(err){
+        console.log(err)
+        res.send({
+            status:400,
+            msg:err
+        })
+    }
+    res.send({
+        status:200,
+        data
+    })
+
+})
 }

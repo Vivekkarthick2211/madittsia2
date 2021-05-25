@@ -8,14 +8,14 @@ file.uploadfile=(email,sub,images,result)=>{
     // console.log(dir2,"dir2")
     console.log(email)
     console.log("imagess",images)
-    const dir = `./images/${email}`;
+    const dir = `D:\\madittsia_images\\${email}`;
             
                 if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir, {
                     recursive: true
                 });
                 }
-            const dir2=`${dir}/${sub}`
+            const dir2=`${dir}\\${sub}`
             console.log(dir2,"sdfsdafsdfsdf")
             if (!fs.existsSync(dir2)) {
                 
@@ -41,7 +41,7 @@ file.uploadfile=(email,sub,images,result)=>{
                 }
             }
             console.log("asdiofsdfj",snd_img)
-            img.mv(`${dir2}/${snd_img}`,(err,res)=>{
+            img.mv(`${dir2}\\${snd_img}`,(err,res)=>{0
 
                 if(err){
                     console.log(err)
@@ -54,8 +54,11 @@ file.uploadfile=(email,sub,images,result)=>{
                     console.log(err)
                     result(null,err)
                 }
-                result(null,res)
+                
             })
+            // http://14c026d2e900.ngrok.io/
+            
+            result(null,`images uploaded to this path ${dir2}\\${snd_img}`)
 }
 
 

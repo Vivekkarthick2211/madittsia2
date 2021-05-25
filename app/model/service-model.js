@@ -3,7 +3,7 @@ const Services=function(){
     
 }
 Services.getAll = result => {
-    sql.query("SELECT id,name,description,service_id FROM maditssia_sub_service", (err, res) => {
+    sql.query("SELECT id,name,description,service_id,image_name FROM maditssia_sub_service", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);

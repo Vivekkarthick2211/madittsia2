@@ -16,8 +16,13 @@ module.exports = app => {
     const admin_register=require('../controller/admin-controller')
     const subbusiness=require('../controller/business-sub-controller')
     const imageupload=require('../controller/imageupload-cotroller')
+    const gem_register=require('../controller/gem-controller')
     // Create a new Customer
-    
+    const fssai_register=require('../controller/fssai-controller')
+    const uyegp=require('../controller/uyegp-contoller')
+    const gmp=require('../controller/gmp-controller')
+    const needs=require('../controller/needs-controller')
+    const pmegp=require('../controller/pmegp-controller')
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
@@ -75,7 +80,21 @@ module.exports = app => {
    app.put('/admin/:id',admin_register.admin_update)
    app.get('/admin_login/:admin_id',admin_register.admin_login)
    app.put('/update_notify/:id',notify.updnotify)
-
    app.post('/img/:email/:sub',imageupload.images)
+
+   app.post('/gem_insert',gem_register.gemregister)
+   app.get('/gem_peoples',gem_register.findall)
+   
+   app.post('/fssai_insert',fssai_register.insert_fssai)
+   app.get('/fssai_peoples',fssai_register.findall_fssai)
+
+   app.post('/uyegp_insert',uyegp.postuyegp)
+
+   app.post('/gmp_insert',gmp.postgem)
+
+   app.post('/needs_insert',needs.postneeds)
+
+   app.post('/pmegp_insert',pmegp.postpmegp)
+
   };
      

@@ -8,7 +8,7 @@ function encrypt(text) {
   encrypted = Buffer.concat([encrypted, cipher.final()]);
   return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
  }
- 
+ const {v4 : uuidv4} = require('uuid')
 // Create and Save a new Customer
 exports.register= (req, res) => {
   // Validate request
@@ -20,6 +20,7 @@ exports.register= (req, res) => {
 
   // Create a Customer
   const registerdetails = new Madittsia({
+    user_id:uuidv4(),
     first_name: req.body.fname ,
     last_name : req.body.lname ,
     phone_no:  req.body.phone ,
@@ -28,7 +29,7 @@ exports.register= (req, res) => {
     Address:  req.body.address ,
     pincode : req.body.pincode ,
     dateofbirth:  req.body.dateofbirth ,
-    gender:  req.body.gender ,
+    gender:  req.body.gender,
     aadhar_no:  req.body.aadhar_no ,
     qualification:  req.body.qualification ,
     business_type:  req.body.business_type ,
@@ -58,8 +59,6 @@ exports.register= (req, res) => {
       status:200,
       msg:"Okk ",
       data
-
-      
     });
   });
 };

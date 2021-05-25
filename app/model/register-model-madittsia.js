@@ -3,6 +3,7 @@ const sql = require("./db.js");
 // constructor
 const Madittsia = function(registerdetails) {
     //this.id = registerdetails.first_name,
+    this.user_id=registerdetails.user_id
     this.first_name = registerdetails.first_name,
     this.last_name = registerdetails.last_name,
     this.phone_no= registerdetails.phone_no,
@@ -80,7 +81,7 @@ Madittsia.check_mail=(mail,result)=>{
 
 Madittsia.findById = (email, result) => {
 
- sql.query(`SELECT first_name,last_name,gender,phone_no,email,Address,qualification,business_type FROM user_register where email='${email}'`, (err, res) => {
+ sql.query(`SELECT first_name,last_name,gender,phone_no,Aadhar_no,email,Address,qualification,business_type FROM user_register where email='${email}'`, (err, res) => {
 
    if (err) {
      console.log("error: ", err);

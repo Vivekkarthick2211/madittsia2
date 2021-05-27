@@ -17,6 +17,7 @@ module.exports = app => {
     const subbusiness=require('../controller/business-sub-controller')
     const imageupload=require('../controller/imageupload-cotroller')
     const gem_register=require('../controller/gem-controller')
+    const experts=require("../controller/expert-controller")
     // Create a new Customer
     const fssai_register=require('../controller/fssai-controller')
     const uyegp=require('../controller/uyegp-contoller')
@@ -66,6 +67,10 @@ module.exports = app => {
    app.get("/events/:email",eventsregister.eventregister_peopledisabled);
   /*  app.get("/example/:subs",example.serviceOne);    Not Needed its just for work*/
    // app.delete("/customers", customers.deleteAll);
+//expert
+   app.post("/expert",experts.expertregister);
+   app.get("/expertsall",experts.expertregister_people);
+
    app.get("/subbusiness/:maincategory", subbusiness.serviceOne);
    //
    app.post('/ins_services',subservices.insert_subserv)

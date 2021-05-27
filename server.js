@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to Jeevan & Vivek's application." });
 });
 const userId = uuidv4()
 console.log(userId)

@@ -50,16 +50,26 @@ exports.expertregister_people = (req, res) => {
     if (err)
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving customers." 
-
-      });
-      
-     
+          err.message || "Some error occurred while retrieving customers."
+      }); 
     else res.send({
       status:200,
       msg:"Okk ",
       data:data
     });
   });
-  // res.send(err)
+};
+exports.expertlist = (req, res) => {
+    expert.getexpertslist((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving customers."
+      }); 
+    else res.send({
+      status:200,
+      msg:"Okk ",
+      data:data
+    });
+  });
 };

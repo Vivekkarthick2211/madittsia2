@@ -70,6 +70,7 @@ module.exports = app => {
 //expert
    app.post("/expert",experts.expertregister);
    app.get("/expertsall",experts.expertregister_people);
+   app.get("/expertiselist",experts.expertlist);
 
    app.get("/subbusiness/:maincategory", subbusiness.serviceOne);
    //

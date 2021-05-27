@@ -32,5 +32,15 @@ experts.getexperts=(result)=>{
         result(null,res)
     })
 } 
+experts.getexpertslist=(result)=>{
+    sql.query(`select * from expertisearea`,(err,res)=>{
+        if(err){
+            console.log(err)
+            result(null,err)
+        }
+        console.log(res)
+        result(null,res)
+    })
+} 
 
 module.exports=experts;

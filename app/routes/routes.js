@@ -18,6 +18,7 @@ module.exports = app => {
     const imageupload=require('../controller/imageupload-cotroller')
     const gem_register=require('../controller/gem-controller')
     const experts=require("../controller/expert-controller")
+    const agency=require("../controller/agency-controller")
     // Create a new Customer
     const fssai_register=require('../controller/fssai-controller')
     const uyegp=require('../controller/uyegp-contoller')
@@ -71,7 +72,10 @@ module.exports = app => {
    app.post("/expert",experts.expertregister);
    app.get("/expertsall",experts.expertregister_people);
    app.get("/expertiselist",experts.expertlist);
-
+//agency
+    app.post("/agencyreg",agency.agencyregister);
+    app.get("/agencymembers",agency.getagencymembers);
+    
    app.get("/subbusiness/:maincategory", subbusiness.serviceOne);
    //
    app.post('/ins_services',subservices.insert_subserv)

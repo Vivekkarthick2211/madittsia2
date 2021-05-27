@@ -8,22 +8,20 @@ const Madittsia = function(registerdetails) {
     this.last_name = registerdetails.last_name,
     this.phone_no= registerdetails.phone_no,
     this.email = registerdetails.email,
-    this.password= registerdetails.password['encryptedData'],   
+    this.password= registerdetails.password['encryptedData'],
+    this.gender = registerdetails.gender,
     this.Address= registerdetails.Address,
     this.pincode = registerdetails.pincode,   
     this.dateofbirth = registerdetails.dateofbirth,
-    this.gender = registerdetails.gender,
     this.aadhar_no = registerdetails.aadhar_no,
     this.qualification = registerdetails.qualification,
-    this.business_type = registerdetails.business_type,
-/*   this.landline_no= registerdetails.landline_no,
-    this.city = registerdetails.city,
-    this.state = registerdetails.state, 
-    this.company_name = registerdetails.company_name,
-    this.service_category= registerdetails.service_category,
-    this.service_type= registerdetails.service_type,*/  
+    this.business_type = registerdetails.business_type, 
     this.fcm_token = registerdetails.fcm_token
 }
+
+
+
+
 Madittsia.create = (registerdetails, result) => {
             sql.query("INSERT INTO user_register SET ?", registerdetails, (err, res) => {
                        if (err) {
@@ -46,7 +44,7 @@ Madittsia.create = (registerdetails, result) => {
 //jsjdjdaj
 
 Madittsia.getAlll = result => {
-  sql.query("SELECT first_name,last_name,phone_no,email,dateofbirth,Address,pincode,gender,qualification,business_type FROM user_register", (err, res) => {
+  sql.query("SELECT user_id,first_name,last_name,phone_no,email,dateofbirth,Address,pincode,gender,aadhar_no,qualification,business_type FROM user_register", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);
@@ -100,6 +98,27 @@ Madittsia.findById = (email, result) => {
   result({ kind: "not_found" }, null);
  });
 }; 
+const Madittsia_update = function(register) {
+  this.first_name = register.fname,
+  this.last_name = register.lname,
+  this.phone_no= register.phone,
+  this.gender = register.gender,
+
+  this.Address= register.address,
+  this.qualification = register.qualification,
+  this.business_type = register.business_type
+}
+Madittsia_update.update_profile=(email,upd_prof,result)=>{
+  console.log('update',upd_prof)
+  sql.query(`update user_register set ? where email='${email}';`,upd_prof,(err,res)=>{
+    if(err){
+      console.log(err)
+      result(null,err)
+    }
+    result(null,{id:res.email,...upd_prof})
+  })
+
+}
 
 
 
@@ -158,4 +177,5 @@ Customer.removeAll = result => {
 }; */
 
 module.exports =Madittsia;
+// module.exports=Madittsia_update;
 

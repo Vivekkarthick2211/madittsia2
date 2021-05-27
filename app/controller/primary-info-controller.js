@@ -15,6 +15,7 @@ exports.primary= (req, res) => {
     /* first_name: req.body.fname ,
     last_name : req.body.lname ,
     phone_no:  req.body.phone , */
+    user_id:req.body.user_id,
     email : req.body.email , 
     business_type:  req.body.business_type ,
     company_name: req.body.company_name , 

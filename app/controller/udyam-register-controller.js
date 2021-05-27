@@ -2,6 +2,7 @@ var udyam=require('../model/udyam-register-model')
 
 exports.udyamregister=(req,res)=>{
     var udytable=new udyam({
+        user_id:req.body.user_id,
         aadhar_no:req.body.aadhar_no,
         name_of_entrepreneur:req.body.name_of_entrepreneur,
         socialcategory:req.body.socialcategory,

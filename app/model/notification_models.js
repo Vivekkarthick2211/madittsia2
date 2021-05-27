@@ -7,7 +7,7 @@ var notification=function(list){
 }
 
 notification.find_notify=(result)=>{
-    sql.query(`select * from notification_tab ORDER BY id DESC;`,(err,res)=>{
+    sql.query(`select * from notification_tab ORDER BY user_id DESC;`,(err,res)=>{
         if(err){
             console.log(err)
             result(null,err)

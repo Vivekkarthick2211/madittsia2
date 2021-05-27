@@ -17,15 +17,15 @@ exports.register= (req, res) => {
       message: "Content can not be empty!"
     });
   }
-
+  
   // Create a Customer
   const registerdetails = new Madittsia({
     user_id:uuidv4(),
-    first_name: req.body.fname ,
-    last_name : req.body.lname ,
-    phone_no:  req.body.phone ,
+    first_name: req.body.first_name ,
+    last_name : req.body.last_name ,
+    phone_no:  req.body.phone_no ,
     email : req.body.email ,
-    password : encrypt(req.body.password) , 
+    password : encrypt(req.body.password), 
     Address:  req.body.address ,
     pincode : req.body.pincode ,
     dateofbirth:  req.body.dateofbirth ,
@@ -41,6 +41,7 @@ exports.register= (req, res) => {
     service_type: req.body.service_type , */
     fcm_token: req.body.fcm_token 
   });
+  
 
 
   // Save Customer in the database
@@ -125,6 +126,35 @@ exports.findmail=(req,res)=>{
       data
     })
   })
+}
+
+exports.update_prof=(req,res)=>{
+  const updateing=new Madittsia({
+    first_name: req.body.fname ,
+    last_name : req.body.lname ,
+    phone_no:  req.body.phone ,
+    email : req.body.email ,
+    Address:  req.body.address ,
+    gender:  req.body.gender,
+    qualification:  req.body.qualification ,
+    business_type:  req.body.business_type ,
+
+  })
+  console.log(req.params.email)
+  console.log(req.body.fname,req.body.lname,req.body.phone,req.body.address)
+Madittsia.update_profile(req.params.email,new Madittsia(req.body),(err,data)=>{
+  if(err){
+    console.log(err)
+    res.send({
+      status:500,
+      msg:err
+    })
+  }
+  res.send({
+    status:200,
+    msg:data
+  })
+})
 }
 
 /*

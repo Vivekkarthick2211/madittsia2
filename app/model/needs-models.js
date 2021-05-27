@@ -30,6 +30,14 @@ needs.inserting=(reg_needs,result)=>{
             result(null,err)
         }
         result(null,res)
+        var read_mode=false;
+        sql.query(`insert into notification_tab(user_id,mail,message,read_mode) values('1','${reg_needs['mailid']}','${reg_needs['mailid']} joined on NEEDS',${read_mode})`,(err,res)=>{
+            if(err){
+                console.log(err)
+                result(null,err)
+            }
+            // result(null,res)
+        })
     })
 }
 

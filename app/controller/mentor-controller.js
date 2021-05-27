@@ -1,5 +1,5 @@
 const MentorMadittsia = require("../model/mentor-model.js");
-
+const {v4 : uuidv4} = require('uuid')
  
 // Create and Save a new Customer
 exports.mentorregister= (req, res) => {
@@ -12,8 +12,10 @@ exports.mentorregister= (req, res) => {
 
   // Create a Customer
   const mentorregisterdetails = new MentorMadittsia({
-    first_name: req.body.fname ,
-    last_name : req.body.lname ,
+
+    user_id:uuidv4(),
+    first_name: req.body.fname,
+    last_name : req.body.lname,
     email : req.body.email,
     ccode: req.body.ccode,   
     phone: req.body.phone,

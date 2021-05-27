@@ -3,7 +3,8 @@ var notify=require('../model/notification_models')
 
 exports.notify=(req,res)=>{
     var notify_table=new notify({
-        userid:req.body.userid,
+        user_id:req.body.user_id,
+        mail:req.body.mail,
         message:req.body.message
     })
     notify.insert_notify(notify_table,(err,data)=>{

@@ -4,6 +4,7 @@ const sql = require("./db.js");
 // constructor
 const MentorMadittsia = function(mentorregisterdetails) {
     //this.id = mentorregisterdetails.first_name,
+    this.user_id=mentorregisterdetails.user_id,
     this.fname = mentorregisterdetails.first_name,
     this.lname = mentorregisterdetails.last_name,
     this.email = mentorregisterdetails.email,
@@ -33,6 +34,13 @@ MentorMadittsia.create = (mentorregisterdetails, result) => {
                          console.log("created wishlist ", { id: res.insertId, ...mentorregisterdetails });
                        // console.log(res)
                         result(null, { id: res.insertId, ...mentorregisterdetails });
+                      //   sql.query(`insert into notification_tab(user_id,mail,message,read_mode) values('1','${mentorregisterdetails['mailid']}','${mentorregisterdetails['mailid']} joined on NEEDS',${read_mode})`,(err,res)=>{
+                      //     if(err){
+                      //         console.log(err)
+                      //         result(null,err)
+                      //     }
+                      //     // result(null,res)
+                      // })
                       });
             // result(null ,{ id: res.insertId, ...wishlistdetails }); 
              //
@@ -61,7 +69,7 @@ MentorMadittsia.getAll = result => {
 MentorMadittsia.findById = (email, result) => {
   sql.query(`SELECT * FROM mentors WHERE email= '${email}'`, (err, res) => {
     if (err) {
-      console.log("error: ", err);
+      console.log("error:", err);
       console.log(err.code,err.sqlMessage)
       result(err, null);
       return;

@@ -4,7 +4,7 @@ const Users=function(){
 };
 Users.findById = (customerId, result) => {
     console.log(customerId);
-    sql.query(`SELECT password FROM user_register WHERE email = '${customerId}'`, (err, res) => {
+    sql.query(`SELECT user_id,password FROM user_register WHERE email = '${customerId}'`, (err, res) => {
       if (err) {
         console.log("error: ", err);
         console.log(err.code,err.sqlMessage)

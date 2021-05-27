@@ -23,14 +23,18 @@ module.exports = app => {
     const gmp=require('../controller/gmp-controller')
     const needs=require('../controller/needs-controller')
     const pmegp=require('../controller/pmegp-controller')
+
+    const update_register=require('../controller/update_register-controller')
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
     app.get('/reg_mail',madittsia_register.findmail) 
+    app.put("/upd_prof/:email",update_register.update_prof)
 //    app.post("/service", services.createservice);
    app.get("/login/:customerId",madittsia_login.findOne);
 /////////
     app.post("/primary_info",Madittsia_primary.primary); 
+
     
     // app.get("/service", services.findAll);
     app.get("/menu", Menu.findall);
@@ -82,7 +86,7 @@ module.exports = app => {
    app.put('/update_notify/:id',notify.updnotify)
    app.post('/img/:email/:sub',imageupload.images)
 
-   app.post('/gem_insert',gem_register.gemregister)
+   app.post('/gem_ins ert',gem_register.gemregister)
    app.get('/gem_peoples',gem_register.findall)
    
    app.post('/fssai_insert',fssai_register.insert_fssai)

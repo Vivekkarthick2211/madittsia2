@@ -5,7 +5,7 @@ const {v4 : uuidv4} = require('uuid')
 exports.postgem=(req,res)=>{
     var reg_uy=new gmp({
         
-        user_id:uuidv4(),
+        user_id:req.body.user_id,
         name_of_entrepreneur:req.body.name_of_enterprise,
         socialcategory:req.body.socialcategory,
         gender:req.body.gender,

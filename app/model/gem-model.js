@@ -1,6 +1,8 @@
+
 const sql = require("./db.js");
 
 var gem_tables=function(gem){
+  this.user_id=gem.user_id
     this.name_of_entrepreneur=gem.name_of_entrepreneur;
     this.socialcategory=gem.socialcategory;
     this.gender=gem.gender;
@@ -10,18 +12,30 @@ var gem_tables=function(gem){
     this.mailid=gem.mailid;
     this.passbook=gem.passbook;
     this.pancard=gem.pancard;
+    this.bankdetails=gem.bankdetails
+    this.it_return=gem.it_return
     this.udyam=gem.udyam;
-    this.cancelled_cheque_leaf=gem.cancelled_cheque_leaf;
-    this.it_returns_user_id_and_Password=JSON.stringify(gem.it_returns_user_id_and_Password)
-    this.bankpass_book=gem.bankpass_book
+    this.cheque=gem.cheque;
+    
+    
 }
 
 gem_tables.insertgem=(gemreg,result)=>{
-    sql.query(`insert into gem_registered set?`,gemreg,(err,res)=>{
+    sql.query(`insert into gem_register set?`,gemreg,(err,res)=>{
         if(err){
+          console.log(err)
             result(null,err)
         }
         result(null,{res,...gemreg})
+
+        var read_mode=false;
+        sql.query(`insert into notification_tab(user_id,mail,message,read_mode) values('1','${gemreg['mailid']}','${gemreg['mailid']} joined on GEM',${read_mode})`,(err,res)=>{
+            if(err){
+                console.log(err)
+                result(null,err)
+            }
+            // result(null,res)
+        })
     })
 }
 gem_tables.getAll = result => {

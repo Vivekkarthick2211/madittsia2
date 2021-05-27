@@ -2,6 +2,7 @@ const fssaireg = require('../model/fssai-model')
 
 exports.insert_fssai=(req,res)=>{
     var insfssai=new fssaireg({
+      user_id:req.body.user_id,
         name_of_entrepreneur:req.body.name_of_entrepreneur,
         socialcategory:req.body.socialcategory,
         gender:req.body.gender,

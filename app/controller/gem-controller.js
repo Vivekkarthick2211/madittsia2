@@ -2,6 +2,7 @@ var gemtab=require('../model/gem-model')
 
 exports.gemregister=(req,res)=>{
     var reg_gem=new gemtab({
+      user_id:req.body.user_id,
         name_of_entrepreneur:req.body.name_of_enterprise,
         socialcategory:req.body.socialcategory,
         gender:req.body.gender,
@@ -10,11 +11,13 @@ exports.gemregister=(req,res)=>{
         address:req.body.address,
         mailid:req.body.mailid,
         passbook:req.body.passbook,
-        pancard:req.body.pancard,
+        pancard:req.body.pancard, 
+        bankdetails:req.body.bankdetails,
+        it_return:req.body.it_return,
         udyam:req.body.udyam,
-        cancelled_cheque_leaf:req.body.cancelled_cheque_leaf,
-        it_returns_user_id_and_Password:req.body.it_returns_user_id_and_Password,
-        bankpass_book:req.body.bankpass_book
+        cheque:req.body.cheque
+        
+       
     })
     gemtab.insertgem(reg_gem,(err,data)=>{
         if(err){

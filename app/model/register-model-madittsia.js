@@ -122,6 +122,7 @@ Madittsia_update.update_profile=(email,upd_prof,result)=>{
 
 
 
+
 /* 
 Customer.updateById = (id, customer, result) => {
   sql.query(

@@ -27,6 +27,10 @@ module.exports = app => {
     const pmegp=require('../controller/pmegp-controller')
 
     const update_register=require('../controller/update_register-controller')
+
+    const update_otp=require('../controller/upd-otp-controller')
+
+
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
@@ -110,5 +114,10 @@ module.exports = app => {
 
    app.post('/pmegp_insert',pmegp.postpmegp)
 
+   app.put('/upd_otp/:mail',update_otp.register_opt)
+
+   app.get('/get_otp/:mail',update_otp.get_otp)
+
+   app.put('/upd_pass/:email',update_otp.update_password)
   };
      

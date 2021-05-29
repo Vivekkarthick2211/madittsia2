@@ -15,7 +15,9 @@ exports.update_prof=(req,res)=>{
     })
     console.log(req.params.email)
     console.log(req.body.fname,req.body.lname,req.body.phone,req.body.address)
+
     Madittsiaupd.update_profile(req.params.email,new Madittsia(req.body),(err,data)=>{
+
     if(err){
       console.log(err)
       res.send({

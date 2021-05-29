@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors=require("cors");
 const app = express();
 const {v4 : uuidv4} = require('uuid')
-
+var otpGenerator = require('otp-generator')
 app.use(cors());
 var fileupload = require("express-fileupload");
 app.use(fileupload());
@@ -17,6 +17,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // simple route
+var otp=otpGenerator.generate(6, { upperCase: false, specialChars: false });
+console.log(otp)
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Jeevan & Vivek's application." });
 });

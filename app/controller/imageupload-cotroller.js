@@ -5,11 +5,11 @@ var fs = require('fs');
 exports.images=(req,res)=>{
 
 const imageupd=new fileupload({
-        file:req.files.file
-        
-    });
+        file:req.files.file_upload
+       
+         });
 
-
+console.log(req.body.file)
     fileupload.uploadfile(req.params.email,req.params.sub,imageupd,(err,data)=>{
        
         if(err){

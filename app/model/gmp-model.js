@@ -12,7 +12,7 @@ var gmp=function(txt){
     this.aadharcard=txt.aadharcard;
 }
 gmp.insert=(insgmp,result)=>{
-    sql.query(`insert into gmp_registered set?`,insgmp,(err,res)=>{
+    sql.query(`insert into gmp_registered set ?`,insgmp,(err,res)=>{
         if(err){
             console.log(err)
             result(null,err)

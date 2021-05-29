@@ -1,7 +1,7 @@
 module.exports = {
     HOST: "localhost",
     USER: "root",
-    PASSWORD: "rootvi",
+    PASSWORD: "rootjee",
     DB: "maditssia_test_db",
     port:3306,
     insecureAuth : true

@@ -49,16 +49,16 @@ file.uploadfile=(email,sub,images,result)=>{
                 }
                 
             })
-            sql.query(`insert into images(path,images) values('${dir2}','${dir2}/${snd_img}')`,(err,res)=>{
-                if(err){
-                    console.log(err)
-                    result(null,err)
-                }
+            // sql.query(`insert into images(path,images) values('${dir2}','${dir2}/${snd_img}')`,(err,res)=>{
+            //     if(err){
+            //         console.log(err)
+            //         result(null,err)
+            //     }
                 
-            })
+            // })
             // http://14c026d2e900.ngrok.io/
             
-            result(null,`images uploaded to this path ${dir2}\\${snd_img}`)
+            result(null,`${dir2}\\${snd_img}`)
 }
 
 

@@ -27,7 +27,9 @@ module.exports = app => {
     const pmegp=require('../controller/pmegp-controller')
 
     const update_register=require('../controller/update_register-controller')
+
     const update_otp=require('../controller/upd-otp-controller')
+
 
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);

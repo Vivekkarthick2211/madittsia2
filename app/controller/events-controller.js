@@ -9,7 +9,8 @@ exports.eventsregister= (req, res) => {
   }
   // Create a Customer
   const eventregisterdetails = new EventMadittsia({
-    // user_id:req.body.user_id,
+    user_id:req.body.user_id,
+
     event_name: req.body.eventname ,
     event_place: req.body.eventplace ,
     Address:  req.body.address , 

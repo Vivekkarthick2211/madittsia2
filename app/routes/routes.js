@@ -1,3 +1,6 @@
+
+// module.exports = router;
+
 module.exports = app => {
     const madittsia_register= require("../controller/register-controller-madttisia.js");
     const madittsia_login= require("../controller/user-login-controller");
@@ -15,7 +18,7 @@ module.exports = app => {
     const uday_register=require('../controller/udyam-register-controller')
     const admin_register=require('../controller/admin-controller')
     const subbusiness=require('../controller/business-sub-controller')
-    const imageupload=require('../controller/imageupload-cotroller')
+    const imageupload=require('../controller/image-upload-controller')
     const gem_register=require('../controller/gem-controller')
     const experts=require("../controller/expert-controller")
     const agency=require("../controller/agency-controller")
@@ -30,7 +33,8 @@ module.exports = app => {
 
     const update_otp=require('../controller/upd-otp-controller')
 
-
+    // const image=require('../controller/new_image')
+    // app.post('/img',image.store_img)
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
@@ -83,9 +87,9 @@ module.exports = app => {
 //agency
     app.post("/agencyreg",agency.agencyregister);
     app.get("/agencymembers",agency.getagencymembers);
-    
-   app.get("/subbusiness/:maincategory", subbusiness.serviceOne);
-   //
+    app.put("/updagency/:id",agency.update_agency);
+    app.get("/subbusiness/:maincategory", subbusiness.serviceOne);
+
    app.post('/ins_services',subservices.insert_subserv)
    app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
    app.put('/update_service/:id',subservices.updating_serv)
@@ -98,7 +102,8 @@ module.exports = app => {
    app.put('/admin/:id',admin_register.admin_update)
    app.get('/admin_login/:admin_id',admin_register.admin_login)
    app.put('/update_notify/:id',notify.updnotify)
-   app.post('/img/:email/:sub',imageupload.images)
+
+   app.post('/image/:email/:sub',imageupload.images)
 
    app.post('/gem_ins ert',gem_register.gemregister)
    app.get('/gem_peoples',gem_register.findall)

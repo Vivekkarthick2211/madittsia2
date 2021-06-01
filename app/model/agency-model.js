@@ -28,9 +28,18 @@ var agency=function(agencyregister){
         // result(null,res)
     })
 } */
+agency.update=(id,upd,result)=>{
+    sql.query(`update agency set providingservices='${upd['providingservices']}',address='${upd['address']}',phonenumber='${upd['phonenumber']}' where id='${id}';`,(err,res)=>{
+        if(err){
+            console.log(err)
+            result(null,err)
+        }
+        result(null,res)
+    })
+}
 
 agency.create=(agencydetails,result)=>{
-    sql.query(`select agencyname from agency where agencyname ='${agencydetails['agencyname']}'`,(err,res)=>{
+    sql.query(`select agencyname from agency where agencyname ='${agencydetails['agencyname']}' AND providingservices='${agencydetails['providingservices']}' AND mailid='${agencydetails['mailid']}' AND address='${agencydetails['address']}' AND phonenumber='${agencydetails['phonenumber']}'`,(err,res)=>{
         if (err){
             console.log(err)
             result(null,err) 

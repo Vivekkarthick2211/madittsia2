@@ -6,16 +6,19 @@ const Madittsia = function(registerdetails) {
     this.user_id=registerdetails.user_id
     this.first_name = registerdetails.first_name,
     this.last_name = registerdetails.last_name,
-    this.phone_no= registerdetails.phone_no,
-    this.email = registerdetails.email,
-    this.password= registerdetails.password['encryptedData'],
     this.gender = registerdetails.gender,
-    this.Address= registerdetails.Address,
-    this.pincode = registerdetails.pincode,   
     this.dateofbirth = registerdetails.dateofbirth,
-    this.aadhar_no = registerdetails.aadhar_no,
-    this.qualification = registerdetails.qualification,
     this.business_type = registerdetails.business_type, 
+    this.qualification = registerdetails.qualification,
+    this.annual_income=registerdetails.annual_income,
+    this.social_category=registerdetails.social_category,
+    this.phone_no= registerdetails.phone_no,
+    this.alternative_phone_no=registerdetails.alternative_phone_no,
+    this.email = registerdetails.email,
+    this.business_address= registerdetails.business_address,
+    this.permanent_address= registerdetails.permanent_address,
+    this.pincode = registerdetails.pincode,
+    this.password= registerdetails.password['encryptedData'],
     this.fcm_token = registerdetails.fcm_token
 }
 
@@ -44,7 +47,7 @@ Madittsia.create = (registerdetails, result) => {
 //jsjdjdaj
 
 Madittsia.getAlll = result => {
-  sql.query("SELECT user_id,first_name,last_name,phone_no,email,dateofbirth,Address,pincode,gender,aadhar_no,qualification,business_type FROM user_register", (err, res) => {
+  sql.query("SELECT user_id,first_name,last_name,gender,dateofbirth,business_type,qualification,annual_income,social_category,phone_no,alternative_phone_no,email,business_address,permanent_address,pincode,password,confirm_password FROM user_register", (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

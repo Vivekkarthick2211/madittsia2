@@ -5,7 +5,6 @@ var admin=function(admin){
 
 }
 
-
 admin.insert=(newadmin,result)=>{
     console.log(newadmin)
     sql.query(`insert into adminlogin set ?`,newadmin,(err,res)=>{

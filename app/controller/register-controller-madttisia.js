@@ -21,24 +21,21 @@ exports.register= (req, res) => {
   // Create a Customer
   const registerdetails = new Madittsia({
     user_id:uuidv4(),
-    first_name: req.body.first_name ,
-    last_name : req.body.last_name ,
-    phone_no:  req.body.phone_no ,
-    email : req.body.email ,
-    password : encrypt(req.body.password), 
-    Address:  req.body.address ,
-    pincode : req.body.pincode ,
-    dateofbirth:  req.body.dateofbirth ,
+    first_name: req.body.fname ,
+    last_name : req.body.lname ,
     gender:  req.body.gender,
-    aadhar_no:  req.body.aadhar_no ,
-    qualification:  req.body.qualification ,
+    dateofbirth:  req.body.dateofbirth ,
     business_type:  req.body.business_type ,
-   /*  landmark : req.body.landmark ,
-    city:  req.body.city ,
-    state : req.body.state ,
-    company_name:  req.body.company_name ,
-    service_category:  req.body.service_category ,
-    service_type: req.body.service_type , */
+    qualification:  req.body.qualification ,
+    annual_income: req.body.annual_income,
+    social_category:req.body.social_category,
+    phone_no:  req.body.phone ,
+    alternative_phone_no:req.body.alternative_phone_no,
+    email : req.body.email ,
+    business_address:req.body.business_address,
+    permanent_address:req.body.permanent_address,
+    pincode : req.body.pincode ,
+    password : encrypt(req.body.password), 
     fcm_token: req.body.fcm_token 
   });
   
@@ -46,6 +43,7 @@ exports.register= (req, res) => {
 
   // Save Customer in the database
   Madittsia.create(registerdetails, (err, data) => {
+    console.log(registerdetails)
     //console.log("email")
     if (err)
       res.status(500).send({

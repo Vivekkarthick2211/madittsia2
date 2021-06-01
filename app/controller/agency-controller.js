@@ -41,6 +41,23 @@ exports.agencyregister= (req, res) => {
     });
   });
 };
+
+exports.update_agency=(req,res)=>{
+  agency.update(req.params.id,new agency(req.body),(err,data)=>{
+    if(err){
+      console.log(err)
+      res.send({
+        status:500,
+        msg:err
+      })
+
+    }
+    res.send({
+      status:200,
+      msg:data
+    })
+  })
+}
 exports.getagencymembers = (req, res) => {
     agency.getagency((err, data) => {
     if (err)

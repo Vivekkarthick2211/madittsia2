@@ -1,13 +1,30 @@
 var fs = require('fs');
 const sql = require("./db.js");
+
+const multer = require('multer');
+
+
+
+   
+// var upload = multer({ storage: storage })
+
+// const upload = multer({
+//     storage: multerStorage,
+//     fileFilter: multerFilter
+//   });
+  
+
 const file=function(img){
     this.file=img.file
+    
 
 }
 file.uploadfile=(email,sub,images,result)=>{
     // console.log(dir2,"dir2")
     console.log(email)
-    console.log("imagess",images)
+    console.log("imagess",file)
+    console.log("img2",file.file)
+
     const dir = `D:\\madittsia_images\\${email}`;
             
                 if (!fs.existsSync(dir)) {
@@ -23,12 +40,19 @@ file.uploadfile=(email,sub,images,result)=>{
                     recursive: true
                 });
                 }
-        console.log(images,"asdfsdfsdf")
-            var img=images.file
+        console.log(images['file'].length,"asdfsdfsdf")
+        
+        snd_img=[]
+        test=[];
+        test1=[];
+        for(let j=0;j<images['file'].length;j++){
+            console.log(images['file'][j])
+        
+            var img=images['file'][j]
             var filename=img.name;
+
             console.log(dir)
             result1=[]
-            snd_img=[]
             for(var i=0;i<1;i++){
                 // console.log(i[files])
                 var math=Math.floor(Math.random()*90000) + 10000
@@ -41,28 +65,22 @@ file.uploadfile=(email,sub,images,result)=>{
                 }
             }
             console.log("asdiofsdfj",snd_img)
-            img.mv(`${dir2}\\${snd_img}`,(err,res)=>{0
-
+            
+            img.mv(`${dir2}\\${snd_img}`,(err,res)=>{
                 if(err){
                     console.log(err)
                     result(null,err)
                 }
                 
             })
-            // sql.query(`insert into images(path,images) values('${dir2}','${dir2}/${snd_img}')`,(err,res)=>{
-            //     if(err){
-            //         console.log(err)
-            //         result(null,err)
-            //     }
-                
-            // })
-            // http://14c026d2e900.ngrok.io/
-            
-            result(null,`${dir2}\\${snd_img}`)
+        }
+        for(let s=0;s<snd_img.length;s++){
+            console.log(`${dir2}\\${snd_img[s]}`)
+            test1.push(`${dir2}\\${snd_img[s]}`)
+        }
+           console.log("",test1[0],test1[2])
+            result(null,test1)
 }
-
-
-
 module.exports=file;
 
 

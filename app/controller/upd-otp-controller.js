@@ -17,6 +17,7 @@ exports.register_opt=(req,res)=>{
     
     console.log("otppppp",opt)
     otpupd.updateotp(req.params.mail,opt,(err,data)=>{
+      console.log(req.params.mail)
         // console.log(otpnum)
         var transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -28,12 +29,13 @@ exports.register_opt=(req,res)=>{
         
           var mailOptions = {
             from: 'ddinu1100@gmail.com',
-            to: 'aswinsaikumar@gmail.com',
+            to: req.params.mail,
             subject: 'OTP REFERENCE',
             text:'if you change your password type the OTP on your app',
             html: '<h1>'+data+'</h1>'
 
           };
+          console.log(mailOptions.to)
           
           transporter.sendMail(mailOptions, function(error, info){
             if (error) {

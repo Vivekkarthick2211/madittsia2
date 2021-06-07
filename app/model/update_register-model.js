@@ -6,7 +6,7 @@ const Madittsia_update = function(register) {
     this.phone_no= register.phone,
     this.gender = register.gender,
     this.Address= register.address,
-this.qualification = register.qualification,
+    this.qualification = register.qualification,
     this.business_type = register.business_type
   }
   Madittsia_update.update_profile=(email,upd_prof,result)=>{

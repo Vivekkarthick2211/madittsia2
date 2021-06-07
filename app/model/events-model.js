@@ -2,9 +2,6 @@ const sql = require("./db.js");
 
 // constructor
 const EventsMadittsia = function(eventregisterdetails) {
-
-  this.user_id=eventregisterdetails.user_id
-
     this.eventname = eventregisterdetails.event_name ,
     this.eventplace =eventregisterdetails.event_place ,
     this.Address=eventregisterdetails.Address , 

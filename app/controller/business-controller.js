@@ -76,7 +76,7 @@ exports.findall = (req, res) => {
   // console.log(email)
    var token=[]
    var token1=[]
-   console.log(data.length)
+  //  console.log(data.length)
    for(var i=0;i<data.length;i++){
     console.log("kirubaa",data[i]['fcm_token'])
      
@@ -89,8 +89,6 @@ exports.findall = (req, res) => {
   ,'/topics/'+businesstype)
    .then(function(response) {
     console.log("jeeva",token)
-     // See the MessagingTopicManagementResponse reference documentation
-     // for the contents of response.
      console.log("connected");
      console.log('Successfully subscribed to topic:',response);
    

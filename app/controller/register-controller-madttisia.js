@@ -23,17 +23,18 @@ exports.register= (req, res) => {
     user_id:uuidv4(),
     first_name: req.body.fname ,
     last_name : req.body.lname ,
-    gender:  req.body.gender,
     dateofbirth:  req.body.dateofbirth ,
+    gender:  req.body.gender,
     business_type:  req.body.business_type ,
     qualification:  req.body.qualification ,
-    annual_income: req.body.annual_income,
     social_category:req.body.social_category,
+    aadharcard:req.body.aadharcard,
+    pancard:req.body.pancard,
     phone_no:  req.body.phone ,
     alternative_phone_no:req.body.alternative_phone_no,
     email : req.body.email ,
+    current_address:req.body.current_address,
     business_address:req.body.business_address,
-    permanent_address:req.body.permanent_address,
     pincode : req.body.pincode ,
     password : encrypt(req.body.password), 
     fcm_token: req.body.fcm_token 
@@ -154,6 +155,22 @@ Madittsia.update_profile(req.params.email,new Madittsia(req.body),(err,data)=>{
   })
 })
 }
+
+exports.filterdatas=(req,res)=>{
+  Madittsia.filter_data(req.params.filter,(err,data)=>{
+    if(err){
+      console.log(err)
+      res.send({
+        err
+      })
+    }
+    res.send({
+      status:200,
+      data:data
+    })
+  })
+}
+
 
 /*
 // Update a Customer identified by the customerId in the request

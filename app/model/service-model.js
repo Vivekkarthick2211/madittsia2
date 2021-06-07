@@ -17,15 +17,11 @@ Services.getAll = result => {
     }); 
   };
 
-  Services.findById = (servicename, result) => {
+  Services.findById = (servicename,result) => {
     console.log(servicename)
     sql.query(`Select id,name,service_id from  maditssia_sub_service where service_id=(SELECT service_id FROM maditssia_main_service WHERE service_name= '${servicename}')`, (err, res) => {
 
       if (err) {
-
-
-
-
         console.log("error: ", err);
         console.log(err.code,err.sqlMessage)
         result(err, null);
@@ -39,9 +35,12 @@ Services.getAll = result => {
         console.log(res[0])
         return;
       }
-     result({ kind: "not_found" }, null);
-    });
+    //  result({ kind: "not_found" }, null);
+  });
+
   }; 
+
+  
 
 
   Services.findByIdd = (service, result) => {

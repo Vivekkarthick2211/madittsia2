@@ -61,7 +61,7 @@ Services.getAll = result => {
        // console.log(res[0])
         return;
       }
-     result(res, null);
+     result(null,res);
     });
   }; 
 

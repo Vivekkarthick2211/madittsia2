@@ -111,6 +111,36 @@ exports.serviceOne = (req, res) => {
  }); 
 })
 }
+exports.findgb=(req,res)=>{
+  Madittsia.filter_type(req.params.filter1,req.params.filter2,(err,data)=>{
+    console.log(req.params.filter2)
+    if(err){
+      res.send({
+        status:400,
+        msg:err
+      })
+    }
+    res.send({
+      status:200,
+      data
+    })
+  })
+}
+
+exports.find3_datas_filtering=(req,res)=>{
+  Madittsia.filter_data_and(req.params.age,req.params.gender,req.params.business,(err,data)=>{
+    if(err){
+      res.send({
+        status:400,
+        msg:err
+      })
+    }
+    res.send({
+      status:200,
+      data:data
+    })
+  })
+}
 
 exports.findmail=(req,res)=>{
   Madittsia.find_email((err,data)=>{

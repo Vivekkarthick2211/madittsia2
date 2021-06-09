@@ -127,7 +127,6 @@ Madittsia_update.update_profile=(email,upd_prof,result)=>{
 
 
 Madittsia.filter_data=(filter,result)=>{
-  console.log(typeof(filter))
   sql.query(`select dateofbirth from user_register`,(err,respond)=>{
     if(err){
       console.log(err)
@@ -145,37 +144,170 @@ Madittsia.filter_data=(filter,result)=>{
     year1=[]
     for(let a=0;a<ages.length;a++){
       if(ages[a][1]==year){
-
         year1.push(ages[a][0])
-        console.log("asdfsdfdsfsadf",year1)
-        
+        console.log("asdfsdfdsfsadf",year1) 
       }
     }
-      
- 
+    if(year1==0){
+      console.log('filters')
+      year1=filter
+    }
+    // SELECT user_id,first_name,last_name,gender,dateofbirth,business_type,qualification,social_category,aadharcard,pancard,phone_no,alternative_phone_no,email,current_address,business_address,pincode,subscription FROM user_register where dateofbirth IN (?) OR gender='${filter} OR 'business_type='${filter}' OR (dateofbirth IN (?) AND gender='${filter}') OR (gender='${filter}' AND 'business_type='${filter}') OR (dateofbirth IN (?) AND 'business_type='${filter}') OR (dateofbirth IN (?) AND gender='${filter}' AND 'business_type='${filter}')
     console.log(year1)
-    ji=[]
-    for(let y=0;y<year1.length;y++){
-    console.log(year1[y])
-    var jee
-  sql.query(`SELECT user_id,first_name,last_name,gender,dateofbirth,business_type,qualification,social_category,aadharcard,pancard,phone_no,alternative_phone_no,email,current_address,business_address,pincode FROM user_register where dateofbirth='${year1[y]}'`, (err, res) => {
-     if (err) {
+  sql.query(`SELECT user_id,first_name,last_name,gender,dateofbirth,business_type,qualification,social_category,aadharcard,pancard,phone_no,alternative_phone_no,email,current_address,business_address,pincode,subscription FROM user_register where dateofbirth IN (?) OR gender='${filter} OR 'business_type='${filter}' `,[year1],(err, res) => {
+     if (err) { 
        console.log("error: ", err);
        console.log(err.code,err.sqlMessage)
        result(err, null);
        return;
      }
-     ji.push(res)
-     jee=ji
-     console.log("kart",ji.length) 
+     console.log("jeevan",res)
+     result(null,res)
    });
-
-    }
-    result(null,jee)
-    
-
   })
 }
+
+
+Madittsia.filter_type = (filter1,filter2,result) => {
+  console.log(filter1,filter2)
+  var test=filter2-filter1
+  sql.query(`SELECT user_id,first_name,last_name,gender,dateofbirth,business_type,qualification,social_category,aadharcard,pancard,phone_no,alternative_phone_no,email,current_address,business_address,pincode,subscription FROM user_register limit ${test} offset ${filter1}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      console.log(err.code,err.sqlMessage)
+      result(err, null);
+      return;
+    }
+    
+    if (res.length) {
+      console.log("found customer: ", res);
+      result(null,res);
+      console.log(res.length)
+      //jeevan
+      return;
+    }
+   result({ kind: "not_found" }, null);
+  });
+ }; 
+
+ Madittsia.filter_data_and=(age = null ,gender =null ,business=null,result)=>{
+
+  sql.query(`select dateofbirth from user_register`,(err,respond)=>{
+    if(err){
+      console.log(err)
+      result(null,err)
+    }
+    var data=respond
+    ages=[]
+   var year=new Date().getFullYear()-age
+   console.log("kiruba",year)
+    for(let i=0;i<data.length;i++){
+        var split=data[i]['dateofbirth'].split('-')
+      ages.push([data[i]['dateofbirth'],split[0]])
+    }
+    year1=[]
+    for(let a=0;a<ages.length;a++){
+      if(ages[a][1]==year){
+        year1.push(ages[a][0])
+        console.log("asdfsdfdsfsadf",year1) 
+      }
+    }
+    if(year1==0){
+      console.log('filters')
+      year1=age
+    }
+    console.log(gender,business)
+      if(gender != 't' && year1 != 't' && business != 't'){
+      console.log("vivek jeevan")
+    sql.query(`SELECT user_id,first_name,last_name,gender,dateofbirth,business_type,qualification,social_category,aadharcard,pancard,phone_no,alternative_phone_no,email,current_address,business_address,pincode,subscription FROM user_register where gender='${gender}' AND dateofbirth IN (?) AND business_type='${business}' `,[year1],(err, res) => {
+      if (err) { 
+        console.log("error: ", err);
+        console.log(err.code,err.sqlMessage)
+        result(err, null);
+        return;
+      }
+      console.log("jeevan",res)
+      result(null,res)
+    });
+   }
+   else if(year1 == 't' && gender != 't' && business != 't'){
+    console.log("vivekk")
+    sql.query(`select * from user_register where gender='${gender}' AND business_type='${business}' `,(err, res) => {
+     if (err) { 
+       console.log("error: ", err);
+       console.log(err.code,err.sqlMessage)
+       result(err, null);
+       return;
+     }
+     console.log("jeevan",res)
+     result(null,res)
+   });
+   }else if(business == 't' && gender != 't' && year1 != 't'){
+    console.log("vivekk")
+    sql.query(`select * from user_register where gender='${gender}' AND dateofbirth IN (?)`,[year1],(err, res) => {
+     if (err) { 
+       console.log("error: ", err);
+       console.log(err.code,err.sqlMessage)
+       result(err, null);
+       return;
+     }
+
+     console.log("jeevan",res)
+     result(null,res)
+   });
+   }else if(gender == 't' && business != 't'   && year1 != 't'){
+    sql.query(`select * from user_register where business_type='${business}' AND dateofbirth IN (?) `,[year1],(err, res) => {
+      if (err) { 
+        console.log("error: ", err);
+        console.log(err.code,err.sqlMessage)
+        result(err, null);
+        return;
+      }
+      console.log("jeevan",res)
+      result(null,res)
+    });
+   }else if(business == 't' && year1 == 't' && gender != 't'){
+    sql.query(`select * from user_register where gender='${gender}'`,(err, res) => {
+      if (err) { 
+        console.log("error: ", err);
+        console.log(err.code,err.sqlMessage)
+        result(err, null);
+        return;
+      }
+      console.log("jeevan",res)
+      result(null,res)
+    });
+   }else if(year1 != 't' && business == 't' &&  gender == 't'){
+    sql.query(`select * from user_register where dateofbirth IN (?)`,[year1],(err, res) => {
+      if (err) { 
+        console.log("error: ", err);
+        console.log(err.code,err.sqlMessage)
+        result(err, null);
+        return;
+      }
+      console.log("jeevan",res)
+      result(null,res)
+    });
+   }
+   else if(year1 == 't' && business != 't' &&  gender == 't'){
+    sql.query(`select * from user_register where business_type='${business}'`,(err, res) => {
+      if (err) { 
+        console.log("error: ", err);
+        console.log(err.code,err.sqlMessage)
+        result(err, null);
+        return;
+      }
+      console.log("jeevan",res)
+      result(null,res)
+    });
+   }else{
+     result(null,"poda dubakoor")
+   }
+})
+ }
+
+
+ 
 
 module.exports =Madittsia;
 // module.exports=Madittsia_update;

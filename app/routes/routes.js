@@ -42,16 +42,16 @@ const serv=require('../controller/service_for_app-controller')
     app.get('/reg_mail',madittsia_register.findmail) 
     app.put("/upd_prof/:email",update_register.update_prof)
     app.get('/filterreg_data/:filter',madittsia_register.filterdatas)
-//    app.post("/service", services.createservice);
-   app.get("/login/:customerId",madittsia_login.findOne);
-/////////
+    app.get('/pagenate/:filter1/:filter2',madittsia_register.findgb)
+    app.get('/filtering_datas/:age/:gender/:business',madittsia_register.find3_datas_filtering)
+
+
+    app.get("/login/:customerId",madittsia_login.findOne);
     app.post("/primary_info",Madittsia_primary.primary); 
 
-    
-    // app.get("/service", services.findAll);
     app.get("/menu", Menu.findall);
     app.get("/mainservices", Menu.findalll);
-    // Retrieve a single Customer with customerId
+
     app.get("/menu/:menuId", Menu.findOne);
 
     app.get("/roles",roles_get.findall);

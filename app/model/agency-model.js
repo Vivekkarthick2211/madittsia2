@@ -29,7 +29,7 @@ var agency=function(agencyregister){
     })
 } */
 agency.update=(id,upd,result)=>{
-    sql.query(`update agency set providingservices='${upd['providingservices']}',address='${upd['address']}',phonenumber='${upd['phonenumber']}' where id='${id}';`,(err,res)=>{
+    sql.query(`update agency set providingservices='${upd['providingservices']}',address='${upd['address']}',phonenumber='${upd['phonenumber']}' where agencyId='${id}';`,(err,res)=>{
         if(err){
             console.log(err)
             result(null,err)

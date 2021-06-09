@@ -1,29 +1,18 @@
 var fs = require('fs');
 const sql = require("./db.js");
 
-const multer = require('multer');
-
-
-
-   
-// var upload = multer({ storage: storage })
-
-// const upload = multer({
-//     storage: multerStorage,
-//     fileFilter: multerFilter
-//   });
-  
-
 const file=function(img){
-    this.file=img.file
+    this.file_upload=img.file_upload
     
 
 }
-file.uploadfile=(email,sub,images,result)=>{
+file.uploadfile=(email,sub,imagess,result)=>{
     // console.log(dir2,"dir2")
     console.log(email)
-    console.log("imagess",file)
-    console.log("img2",file.file)
+    console.log("imagess",imagess['file_upload'])
+    // images=[];
+    // images.push(images)
+    // console.log("img2",file)
 
     const dir = `D:\\madittsia_images\\${email}`;
             
@@ -40,24 +29,24 @@ file.uploadfile=(email,sub,images,result)=>{
                     recursive: true
                 });
                 }
-        console.log(images['file'].length,"asdfsdfsdf")
+        console.log(imagess['file_upload'].length,"asdfsdfsdf")
         
         snd_img=[]
         test=[];
         test1=[];
-        for(let j=0;j<images['file'].length;j++){
-            console.log(images['file'][j])
+        for(let j=0;j<imagess['file_upload'].length;j++){
+            console.log(imagess['file_upload'][j])
         
-            var img=images['file'][j]
+            var img=imagess['file_upload'][j]
             var filename=img.name;
-
             console.log(dir)
+
             result1=[]
             for(var i=0;i<1;i++){
                 // console.log(i[files])
                 var math=Math.floor(Math.random()*90000) + 10000
                 result1.push(math)
-            console.log(result)
+            console.log(result1)
                 if(filename == img.name){
                     result1+=img.name
                     console.log(result1)

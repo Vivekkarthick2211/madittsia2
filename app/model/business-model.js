@@ -15,7 +15,7 @@ Business.getAll = result => {
     });
   };
 
- Business.findById = (businesstype,email, result) => {
+ Business.findById = (businesstype,result) => {
      console.log(businesstype)
     sql.query(`SELECT fcm_token FROM user_primary_info where business_type='${businesstype}' OR email='${businesstype}'`, (err, res) => {
 
@@ -25,12 +25,12 @@ Business.getAll = result => {
         result(err, null);
         return;
       }
-  //jeeeevan
+
       if (res.length) {
         console.log("found customer: ", res);
         result(null,res);
         console.log(res)
-        //jeevan
+
         return;
       }
      result({ kind: "not_found" }, null);

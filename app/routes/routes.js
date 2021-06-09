@@ -32,7 +32,8 @@ module.exports = app => {
     const update_register=require('../controller/update_register-controller')
 
     const update_otp=require('../controller/upd-otp-controller')
-
+const qualifications=require('../controller/qualification-controller')
+const serv=require('../controller/service_for_app-controller')
     // const image=require('../controller/new_image')
     // app.post('/img',image.store_img)
     app.post("/register",madittsia_register.register); 
@@ -40,16 +41,17 @@ module.exports = app => {
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
     app.get('/reg_mail',madittsia_register.findmail) 
     app.put("/upd_prof/:email",update_register.update_prof)
-//    app.post("/service", services.createservice);
-   app.get("/login/:customerId",madittsia_login.findOne);
-/////////
+    app.get('/filterreg_data/:filter',madittsia_register.filterdatas)
+    app.get('/pagenate/:filter1/:filter2',madittsia_register.findgb)
+    app.get('/filtering_datas/:age/:gender/:business',madittsia_register.find3_datas_filtering)
+
+
+    app.get("/login/:customerId",madittsia_login.findOne);
     app.post("/primary_info",Madittsia_primary.primary); 
 
-    
-    // app.get("/service", services.findAll);
     app.get("/menu", Menu.findall);
     app.get("/mainservices", Menu.findalll);
-    // Retrieve a single Customer with customerId
+
     app.get("/menu/:menuId", Menu.findOne);
 
     app.get("/roles",roles_get.findall);
@@ -58,6 +60,7 @@ module.exports = app => {
     app.get("/services/all",services.servicesget)
     app.get("/services",Menu.findalll);
     app.get("/services/:servicename", services.serviceOne);
+    app.get("/serv/:serv/:user_id/:studies",serv.services_qualification);
 //subservice
     app.get("/services1/:service", services.service);
     app.get("/services/:servicename/:subs", subservices.serviceOne);
@@ -103,9 +106,9 @@ module.exports = app => {
    app.get('/admin_login/:admin_id',admin_register.admin_login)
    app.put('/update_notify/:id',notify.updnotify)
 
-   app.post('/image/:email/:sub',imageupload.images)
+   app.post('/img/:email/:sub',imageupload.images)
 
-   app.post('/gem_ins ert',gem_register.gemregister)
+   app.post('/gem_insert',gem_register.gemregister)
    app.get('/gem_peoples',gem_register.findall)
    
    app.post('/fssai_insert',fssai_register.insert_fssai)
@@ -124,5 +127,12 @@ module.exports = app => {
    app.get('/get_otp/:mail',update_otp.get_otp)
 
    app.put('/upd_pass/:email',update_otp.update_password)
+
+   app.get('/qualifications',qualifications.quali)
+   app.get('/qualify/:studies',qualifications.qualicatio_for_studies)
+   app.get('/qualifications/:grade',qualifications.qualification_grade)
+   app.get('/qualifications/:grade/:dge',qualifications.qualification_dge)
+
+   app.get('/sub',qualifications.quasub)
   };
      

@@ -75,14 +75,14 @@ const subservices=function(ins){
       }
       if (res.length) {
         console.log("found customer: ", res);
-        result(res);
+        // result(res);
 
         return;
       }
       console.log({id:res.insertedID,...inserting})
       console.log(inserting['name'])
 
-      result(null,{id:res.insertedID,...inserting})
+      result(null,res)
         // console.log(res[0]['name'])
         // result(res)
         // result({...res}, null);

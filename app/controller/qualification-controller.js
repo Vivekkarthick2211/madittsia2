@@ -1,0 +1,80 @@
+var qualification=require('../model/qualification-model')
+
+exports.quali=(req,res)=>{
+    qualification.qualify((err,data)=>{
+        if(err){
+            console.log(err)
+            res.send({
+                status:400,
+                msg:err
+            })
+        }
+        res.send({
+            status:200,
+            msg:data
+        })
+    })
+}
+
+exports.qualicatio_for_studies=(req,res)=>{
+    qualification.qualification(req.params.studies,(err,data)=>{
+        if(err){
+            console.log(err)
+            res.send({
+                status:400,
+                msg:err
+            })
+        }
+        res.send({
+            status:200,
+            msg:data
+        })
+    })
+}
+
+exports.qualification_grade=(req,res)=>{
+    qualification.qualification_grd(req.params.grade,(err,data)=>{
+        if(err){
+            console.log(err)
+            res.send({
+                status:400,
+                msg:err
+            })
+        }
+        res.send({
+            status:200,
+            msg:data
+        })
+    })
+}
+exports.qualification_dge=(req,res)=>{
+    qualification.qualication_sub(req.params.dge,(err,data)=>{
+        if(err){
+            console.log(err)
+            res.send({
+                status:400,
+                msg:err
+            })
+        }
+        res.send({
+            status:200,
+            msg:data
+        })
+    })
+}
+
+exports.quasub=(req,res)=>{
+    qualification.qualication_subjects((err,data)=>{
+        if(err){
+            console.log(err)
+            res.send({
+                status:400,
+                msg:err
+            })
+        }
+        res.send({
+            status:200,
+            data:data
+        })
+    })
+}

@@ -30,6 +30,7 @@ app.get("/", (req, res) => {
 require("./app/routes/routes.js")(app);
 
 app.use('/img',express.static('D:\\madittsia_images'))
+app.use('/img',express.static('D:\\madittsia_images\\service_logo\\logo'))
 // set port, listen for requests
 const PORT = process.env.PORT || 3100;
 app.listen(PORT, () => {

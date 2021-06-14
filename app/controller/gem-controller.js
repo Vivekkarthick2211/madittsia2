@@ -16,8 +16,6 @@ exports.gemregister=(req,res)=>{
         it_return:req.body.it_return,
         udyam:req.body.udyam,
         cheque:req.body.cheque
-        
-       
     })
     gemtab.insertgem(reg_gem,(err,data)=>{
         if(err){

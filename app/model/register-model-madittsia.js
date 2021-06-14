@@ -9,6 +9,7 @@ const Madittsia = function(registerdetails) {
     this.dateofbirth = registerdetails.dateofbirth,
     this.gender = registerdetails.gender,
     this.business_type = registerdetails.business_type, 
+    this.sub_business_type=registerdetails.sub_business_type
     this.qualification = registerdetails.qualification,
     // this.annual_income=registerdetails.annual_income,
     this.social_category=registerdetails.social_category,
@@ -107,7 +108,6 @@ const Madittsia_update = function(register) {
   this.last_name = register.lname,
   this.phone_no= register.phone,
   this.gender = register.gender,
-
   this.Address= register.address,
   this.qualification = register.qualification,
   this.business_type = register.business_type
@@ -123,9 +123,6 @@ Madittsia_update.update_profile=(email,upd_prof,result)=>{
   })
 
 }
-
-
-
 Madittsia.filter_data=(filter,result)=>{
   sql.query(`select dateofbirth from user_register`,(err,respond)=>{
     if(err){
@@ -217,9 +214,25 @@ Madittsia.filter_type = (filter1,filter2,result) => {
       year1=age
     }
     console.log(gender,business)
-      if(gender != 't' && year1 != 't' && business != 't'){
-      console.log("vivek jeevan")
-    sql.query(`SELECT user_id,first_name,last_name,gender,dateofbirth,business_type,qualification,social_category,aadharcard,pancard,phone_no,alternative_phone_no,email,current_address,business_address,pincode,subscription FROM user_register where gender='${gender}' AND dateofbirth IN (?) AND business_type='${business}' `,[year1],(err, res) => {
+    let query;
+    if(gender != 't' && year1 != 't' && business != 't'){
+      query =`SELECT user_id,first_name,last_name,gender,dateofbirth,business_type,qualification,social_category,aadharcard,pancard,phone_no,alternative_phone_no,email,current_address,business_address,pincode,subscription FROM user_register where gender='${gender}' AND dateofbirth IN (?)  AND business_type='${business}'`
+    }else if(year1 == 't' && gender != 't' && business != 't'){
+      query= `select * from user_register where gender='${gender}' AND business_type='${business}'`
+    }else if(business == 't' && gender != 't' && year1 != 't'){
+      query=`select * from user_register where gender='${gender}' AND dateofbirth IN (?)`
+    }else if(gender == 't' && business != 't'   && year1 != 't'){
+      query=`select * from user_register where business_type='${business}' AND dateofbirth IN (?)`
+    }else if(business == 't' && year1 == 't' && gender != 't'){
+      query=`select * from user_register where gender='${gender}'`
+    }else if(year1 != 't' && business == 't' &&  gender == 't'){
+      query=`select * from user_register where dateofbirth IN (?)`
+    }else if(year1 == 't' && business != 't' &&  gender == 't'){
+      query=`select * from user_register where business_type='${business}'`
+    }else{
+      query=`select * from user_register limit 10`
+    }
+    sql.query(query,[year1],(err, res) => {
       if (err) { 
         console.log("error: ", err);
         console.log(err.code,err.sqlMessage)
@@ -229,80 +242,6 @@ Madittsia.filter_type = (filter1,filter2,result) => {
       console.log("jeevan",res)
       result(null,res)
     });
-   }
-   else if(year1 == 't' && gender != 't' && business != 't'){
-    console.log("vivekk")
-    sql.query(`select * from user_register where gender='${gender}' AND business_type='${business}' `,(err, res) => {
-     if (err) { 
-       console.log("error: ", err);
-       console.log(err.code,err.sqlMessage)
-       result(err, null);
-       return;
-     }
-     console.log("jeevan",res)
-     result(null,res)
-   });
-   }else if(business == 't' && gender != 't' && year1 != 't'){
-    console.log("vivekk")
-    sql.query(`select * from user_register where gender='${gender}' AND dateofbirth IN (?)`,[year1],(err, res) => {
-     if (err) { 
-       console.log("error: ", err);
-       console.log(err.code,err.sqlMessage)
-       result(err, null);
-       return;
-     }
-
-     console.log("jeevan",res)
-     result(null,res)
-   });
-   }else if(gender == 't' && business != 't'   && year1 != 't'){
-    sql.query(`select * from user_register where business_type='${business}' AND dateofbirth IN (?) `,[year1],(err, res) => {
-      if (err) { 
-        console.log("error: ", err);
-        console.log(err.code,err.sqlMessage)
-        result(err, null);
-        return;
-      }
-      console.log("jeevan",res)
-      result(null,res)
-    });
-   }else if(business == 't' && year1 == 't' && gender != 't'){
-    sql.query(`select * from user_register where gender='${gender}'`,(err, res) => {
-      if (err) { 
-        console.log("error: ", err);
-        console.log(err.code,err.sqlMessage)
-        result(err, null);
-        return;
-      }
-      console.log("jeevan",res)
-      result(null,res)
-    });
-   }else if(year1 != 't' && business == 't' &&  gender == 't'){
-    sql.query(`select * from user_register where dateofbirth IN (?)`,[year1],(err, res) => {
-      if (err) { 
-        console.log("error: ", err);
-        console.log(err.code,err.sqlMessage)
-        result(err, null);
-        return;
-      }
-      console.log("jeevan",res)
-      result(null,res)
-    });
-   }
-   else if(year1 == 't' && business != 't' &&  gender == 't'){
-    sql.query(`select * from user_register where business_type='${business}'`,(err, res) => {
-      if (err) { 
-        console.log("error: ", err);
-        console.log(err.code,err.sqlMessage)
-        result(err, null);
-        return;
-      }
-      console.log("jeevan",res)
-      result(null,res)
-    });
-   }else{
-     result(null,"poda dubakoor")
-   }
 })
  }
 

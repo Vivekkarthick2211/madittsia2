@@ -19,16 +19,20 @@ fssaireg.insert_fassi=(insfssai,result)=>{
         if(err){
             result(null,err)
         }
-        result(null,{...insfssai})
-        var read_mode=false;
-        sql.query(`insert into notification_tab(user_id,mail,message,read_mode) values('1','${insfssai['mailid']}','${insfssai['mailid']} joined on FSSI',${read_mode})`,(err,res)=>{
-            if(err){
-                console.log(err)
-                result(null,err)
-            }
-            // result(null,res)
-        })
+        result(null,res)
     })
+    var read_mode=false;
+    sql.query(`insert into notification_tab(user_id,mail,message,read_mode) values('1','${insfssai['mailid']}','${insfssai['mailid']} joined on FSSI',${read_mode})`,(err,resu)=>{
+        if(err){
+            console.log(err)
+            // result(null,err)
+        }
+
+        // result(null,res)
+    })
+
+        
+    
 }
 fssaireg.getAll = result => {
     sql.query("SELECT * FROM fssai_register", (err, res) => {

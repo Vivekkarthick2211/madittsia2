@@ -2,7 +2,7 @@ var gmp=require('../model/gmp-model')
 const {v4 : uuidv4} = require('uuid')
 
 
-exports.postgem=(req,res)=>{
+exports.postgmp=(req,res)=>{
     var reg_uy=new gmp({
         
         user_id:req.body.user_id,

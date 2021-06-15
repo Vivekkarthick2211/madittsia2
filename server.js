@@ -20,8 +20,6 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Jeevan & Vivek's application." });
 });
@@ -29,9 +27,13 @@ app.get("/", (req, res) => {
 
 require("./app/routes/routes.js")(app);
 
+
 app.use('/img',express.static('D:\\madittsia_images'))
+app.use('/img',express.static('D:\\madittsia_images\\service_logo\\logo'))
+app.use('/img_even',express.static('D:\\madittsia_images\\events\\events_img'))
 // set port, listen for requests
-const PORT = process.env.PORT || 3100;
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   process.setMaxListeners(0);
   console.log(`Server is running on port ${PORT}.`);

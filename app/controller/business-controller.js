@@ -69,7 +69,6 @@ exports.findall = (req, res) => {
       messsage:'retrive successfully',
       service:businesstype,
        data:data, 
-
      
    }); 
    console.log(businesstype)
@@ -79,7 +78,7 @@ exports.findall = (req, res) => {
   //  console.log(data.length)
    for(var i=0;i<data.length;i++){
     console.log("kirubaa",data[i]['fcm_token'])
-     
+  
     token.push(data[i]['fcm_token'])
     token1.push(token)
       console.log(token)

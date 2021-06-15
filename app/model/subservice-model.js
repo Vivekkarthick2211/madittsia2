@@ -4,7 +4,8 @@ const subservices=function(ins){
   this.description=ins.description,
   this.name=ins.name,
   this.document=ins.document,
-  this.subs_name_document=ins.subs_name_document
+  this.subs_name_document=ins.subs_name_document,
+  this.image_name=ins.image_name
   // this.service_id=ins.service_id
 }
 
@@ -152,7 +153,7 @@ const subservices=function(ins){
 subservices.update=(id,updserv,result)=>{
 
 
-    sql.query(`update maditssia_sub_service set description='${updserv['description']}' where id=${id};`,(err,res)=>{
+    sql.query(`update maditssia_sub_service set description='${updserv['description']}', image_name='${updserv['image_name']}' where id=${id};`,(err,res)=>{
 
       if(err){
         console.log("update err",err)

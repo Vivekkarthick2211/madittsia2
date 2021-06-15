@@ -39,7 +39,7 @@ gem_tables.insertgem=(gemreg,result)=>{
     })
 }
 gem_tables.getAll = result => {
-    sql.query("SELECT * FROM gem_registered", (err, res) => {
+    sql.query("SELECT * FROM gem_register", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);

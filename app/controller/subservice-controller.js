@@ -60,7 +60,8 @@ exports.insert_subserv=(req,res)=>{
     mainservice:req.body.mainservice,
     description:req.body.description,
     name:req.body.name,
-    document:req.body.document
+    document:req.body.document,
+    image_name:req.body.image_name
     // service_id:req.body.service_id
   })
 

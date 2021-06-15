@@ -34,8 +34,8 @@ module.exports = app => {
     const update_otp=require('../controller/upd-otp-controller')
 const qualifications=require('../controller/qualification-controller')
 const serv=require('../controller/service_for_app-controller')
-    // const image=require('../controller/new_image')
-    // app.post('/img',image.store_img)
+
+    //app_users
     app.post("/register",madittsia_register.register); 
     app.get("/registeredpeople", madittsia_register.register_people);
     app.get("/registeredpeople/:email", madittsia_register.serviceOne);
@@ -44,95 +44,100 @@ const serv=require('../controller/service_for_app-controller')
     app.get('/filterreg_data/:filter',madittsia_register.filterdatas)
     app.get('/pagenate/:filter1/:filter2',madittsia_register.findgb)
     app.get('/filtering_datas/:age/:gender/:business',madittsia_register.find3_datas_filtering)
+    app.put('/upd_otp/:mail',update_otp.register_opt)
+    app.get('/get_otp/:mail',update_otp.get_otp)
+    app.put('/upd_pass/:email',update_otp.update_password)
 
-
+    //app_user_login
     app.get("/login/:customerId",madittsia_login.findOne);
     app.post("/primary_info",Madittsia_primary.primary); 
 
+    //menu with roles
     app.get("/menu", Menu.findall);
     app.get("/mainservices", Menu.findalll);
-
     app.get("/menu/:menuId", Menu.findOne);
-
     app.get("/roles",roles_get.findall);
     app.get("/roles/:rolesname", roles_get.findOne);
       
+    //services
     app.get("/services/all",services.servicesget)
     app.get("/services",Menu.findalll);
     app.get("/services/:servicename", services.serviceOne);
     app.get("/serv/:serv/:user_id/:studies",serv.services_qualification);
-//subservice
+
+    //subservice
+    app.post('/ins_services',subservices.insert_subserv)
     app.get("/services1/:service", services.service);
     app.get("/services/:servicename/:subs", subservices.serviceOne);
-    // Update a Customer with customerId
-    /*app.put("/customers/:customerId", customers.update); */
+    app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
+    app.put('/update_service/:id',subservices.updating_serv)
+    app.put('/upd_doc/:doc_name/:id',subservices.updating_documnet)
+    app.post('/regdoc',reg_docments.regdoc)
+
+    //business_types
     app.get("/business", business.findall);
     app.get("/business/:businesstype", business.serviceOne);
     app.get("/business/:email", business.serviceOne);
-    // Delete a Customer with customerId
-    //HI VIVEK
-   // app.delete("/wishlist/:productid&:userid", explora.delete);
+
+    //mentors
    app.post("/mentorreg",mentorregister.mentorregister);
    app.get("/mentors",mentorregister.registered_people);
    app.get("/mentors/:email", mentorregister.findOne);
-    // Create a new Customer
+
     //event
     app.post("/eventsreg",eventsregister.eventsregister);
     app.get("/events",eventsregister.getallevents);
     app.get("/eventss/:email",eventsregister.eventregister_bymentor);
    app.get("/events/:email",eventsregister.eventregister_peopledisabled);
-  /*  app.get("/example/:subs",example.serviceOne);    Not Needed its just for work*/
-   // app.delete("/customers", customers.deleteAll);
-//expert
+
+    //expert
    app.post("/expert",experts.expertregister);
    app.get("/expertsall",experts.expertregister_people);
    app.get("/expertiselist",experts.expertlist);
-//agency
+
+    //agency
     app.post("/agencyreg",agency.agencyregister);
     app.get("/agencymembers",agency.getagencymembers);
     app.put("/updagency/:id",agency.update_agency);
     app.get("/subbusiness/:maincategory", subbusiness.serviceOne);
 
-   app.post('/ins_services',subservices.insert_subserv)
-   app.post('/inserting_doc/:main_name',subservices.insert_serv_doc)
-   app.put('/update_service/:id',subservices.updating_serv)
-   app.put('/upd_doc/:doc_name/:id',subservices.updating_documnet)
-   app.post('/regdoc',reg_docments.regdoc)
-   app.get('/get_notify',notify.getnotify)
-   app.post('/post_notify',notify.notify)
+    //reg_subservices
    app.get('/get_udy',uday_register.getudyamregister)
    app.post('/reg_uday',uday_register.udyamregister)
-   app.put('/admin/:id',admin_register.admin_update)
-   app.get('/admin_login/:admin_id',admin_register.admin_login)
-   app.put('/update_notify/:id',notify.updnotify)
-
-   app.post('/img/:email/:sub',imageupload.images)
 
    app.post('/gem_insert',gem_register.gemregister)
    app.get('/gem_peoples',gem_register.findall)
-   
+
    app.post('/fssai_insert',fssai_register.insert_fssai)
    app.get('/fssai_peoples',fssai_register.findall_fssai)
 
    app.post('/uyegp_insert',uyegp.postuyegp)
 
-   app.post('/gmp_insert',gmp.postgem)
+   app.post('/gmp_insert',gmp.postgmp)
 
    app.post('/needs_insert',needs.postneeds)
 
    app.post('/pmegp_insert',pmegp.postpmegp)
 
-   app.put('/upd_otp/:mail',update_otp.register_opt)
 
-   app.get('/get_otp/:mail',update_otp.get_otp)
+   //adminLogin
+   app.put('/admin/:id',admin_register.admin_update)
+   app.get('/admin_login/:admin_id',admin_register.admin_login)
 
-   app.put('/upd_pass/:email',update_otp.update_password)
+   //notifications
+   app.get('/get_notify',notify.getnotify)
+   app.post('/post_notify',notify.notify)
+   app.put('/update_notify/:id',notify.updnotify)
 
+   //upload_images
+   app.post('/img/:email/:sub',imageupload.images)
+  
+
+   //qualifications
    app.get('/qualifications',qualifications.quali)
    app.get('/qualify/:studies',qualifications.qualicatio_for_studies)
    app.get('/qualifications/:grade',qualifications.qualification_grade)
    app.get('/qualifications/:grade/:dge',qualifications.qualification_dge)
-
    app.get('/sub',qualifications.quasub)
   };
      

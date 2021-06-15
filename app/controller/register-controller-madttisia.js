@@ -26,6 +26,7 @@ exports.register= (req, res) => {
     dateofbirth:  req.body.dateofbirth ,
     gender:  req.body.gender,
     business_type:  req.body.business_type ,
+    sub_business_type:req.body.sub_business_type,
     qualification:  req.body.qualification ,
     social_category:req.body.social_category,
     aadharcard:req.body.aadharcard,

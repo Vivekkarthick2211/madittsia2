@@ -15,9 +15,9 @@ Business.getAll = result => {
     });
   };
 
- Business.findById = (businesstype,result) => {
+Business.findById = (businesstype,result) => {
      console.log(businesstype)
-    sql.query(`SELECT fcm_token FROM user_primary_info where business_type='${businesstype}' OR email='${businesstype}'`, (err, res) => {
+    sql.query(`SELECT fcm_token FROM user_register where business_type='${businesstype}' OR email='${businesstype}'`, (err, res) => {
 
       if (err) {
         console.log("error: ", err);
